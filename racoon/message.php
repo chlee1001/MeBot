@@ -1,10 +1,8 @@
-<?php
+﻿<?php
 
 $data = json_decode(file_get_contents('php://input'), true);
 
 $content = $data["content"];
-
- 
 
 if($content == "안녕"){ 
 
@@ -14,16 +12,26 @@ echo <<< EOD
 
     "message": {
 
-        "text": "ㅈ ㅏ ㄹ ㅜ ㅁ ㅏ ㄷ ㅣ\\n를 낱말로 만든다면 무엇이 될까?"
+        "text": "안녕하세요 주인님"
 
-    },
+    }
 
-    "keyboard": {
+  
+}
 
-        "type": "buttons",
+EOD;
 
-        "buttons": ["동물", "도시", "행성", "물고기"]
+}
 
+else if($content == "반가워"){
+
+echo <<< EOD
+
+{
+
+    "message": {
+
+        "text" : "저도 반가워요."
     }
 
 }
@@ -31,7 +39,6 @@ echo <<< EOD
 EOD;
 
 }
-
 else{
 
 echo <<< EOD
@@ -40,18 +47,7 @@ echo <<< EOD
 
     "message": {
 
-        "text" : "안녕히 가세요.",
-
-        "photo": {
-
-            "url": "http://52.78.69.152/img_m.jpg",
-
-            "width": 240,
-
-            "height": 240
-
-        }
-
+        "text" : "안녕히 가세요."
     }
 
 }
