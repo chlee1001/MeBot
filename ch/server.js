@@ -11,8 +11,8 @@ app.get('/',function(req, res) {
 	res.send("Hellow World");
 });
 
-var server = app.listen(3000, function(){
- console.log("Express server has started on port 3000")
+var server = app.listen(3000, function(){ // port 3000으로 서버 실행
+ console.log("Express server has started on port 3000") 
 });
  
 app.use(bodyParser.json());
@@ -22,6 +22,5 @@ app.use(session({
  resave: false,
  saveUninitialized: true
 }));
- 
- 
+
 var router = require('./router/main')(app, fs);
