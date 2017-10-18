@@ -3,7 +3,6 @@
 $data = json_decode(file_get_contents('php://input'), true);
 
 $content = $data["content"];
-
 if($content == "안녕"){ 
 
 echo <<< EOD
@@ -47,7 +46,7 @@ echo <<< EOD
 
     "message": {
 
-        "text" : "안녕히 가세요."
+        "text" : substr($content,0,2);
     }
 
 }

@@ -1,12 +1,23 @@
 {
-  "name": "ch",
+  "name": "mebot",
   "version": "1.0.0",
-  "description": "",
-  "main": "keyboard.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "express": "~4.13.1",
+    "ejs": "~2.4.1",
+    "body-parser": "~1.14.2",
+    "express-session": "~1.13.0",
+    "request": "~2.74.0",
+    "encodeuri-safe": "~0.0.1"
   },
-  "keywords": [],
+  "scripts": {
+    "start": "forever start server.js"
+  },
+  "main": "server.js",
+  "devDependencies": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "http:gitthub.com/chlee1001/MeBot"
+  }
 }
