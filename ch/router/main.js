@@ -15,7 +15,7 @@ module.exports = function(app, fs)
 	
 	// 키보드
 	app.get('/keyboard', function(req, res){
-        fs.readFile( __dirname + "/../data/" + "keyboard1.json", 'utf8', function (err, data) {
+        fs.readFile( __dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
            console.log( data );
            res.end( data );
         });
@@ -31,18 +31,17 @@ module.exports = function(app, fs)
 		
 		if(_obj.content == '시작하기')
 		{
-			//"안녕"이라고 메시지 보내고
 			let massage = {
 				"message": {
-					"text": '안녕'
-				},
+					"text": '지금은 번역기만...'
+				} ,
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
 						"번역기",
-						"취소하기"
+						"돌아가기"
 					]
-				}
+				} 
 			};
 			
 			// 카톡으로 전송
@@ -74,14 +73,32 @@ module.exports = function(app, fs)
 				'content-type': 'application/json'
 			}).send(JSON.stringify(massage));
 		}
-		else if(_obj.content == '취소하기')
+		else if(_obj.content == '메뉴')
+		{
+			let massage = {
+				"message": {
+					"text": "안녕 나는 미봇이야"
+				},
+				"keyboard": {
+				"type": "buttons",
+				"buttons": [
+					"시작하기",
+					"도움말"
+				]
+			}
+			};
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(massage));
+		}
+		else if(_obj.content == '!취소')
 		{
 			flag = 0;
 			let massage = {
 				"message": {
 					"text": "취소됨!"
-			},
-			"keyboard": {
+				},
+				"keyboard": {
 				"type": "buttons",
 				"buttons": [
 					"시작하기",
@@ -99,7 +116,7 @@ module.exports = function(app, fs)
 			flag =1;
 			let massage = {
 				"message": {
-					"text": "안녕 나는 미봇번역기야!"
+					"text": "안녕 나는 미봇번역기야! 사용방법 (돌아갈려면 '!취소')"
 				}
 			};
 			res.set({
