@@ -2,7 +2,7 @@
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$today=getdate();
+$today= getdate();
 $content = $data["content"];
 if($content == "대화"||substr($content,0,6) == "하이"||substr($content,0,3) == "안"){ 
 echo <<< EOD
