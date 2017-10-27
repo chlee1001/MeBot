@@ -39,7 +39,7 @@ using 밥대생API or Parsing the school homepage, Weather API.
 </blockquote>
 
 ## Development wiki reference
-* [카카오 봇 API 간단설명](https://github.com/chlee1001/MeBot/wiki/Quick-description-of-Kakao-chatbot-API)
+* [Quick description of Kakao chatbot API](https://github.com/chlee1001/MeBot/wiki/Quick-description-of-Kakao-chatbot-API)
 
 
 ## More
