@@ -1,1 +1,3 @@
 <p><site><a href="https://github.com/chlee1001/MeBot/wiki">Go to Wiki</a></site></p>
+
+각자 개인 폴더사용 후 합칠 예정...
