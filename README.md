@@ -1,35 +1,3 @@
-# Computer Network Project_MeBot
+<p><site><a href="https://github.com/chlee1001/MeBot/wiki">Go to Wiki</a></site></p>
 
-## What is MeBot
-Mebot is chatbot for a convenient life.
-
-#### Using
-- Kakao Auto Reply API 
-- AWS - Ubuntu, apache, php
-- Laguage - Node.js & PHP & Python...
-
-## MeBot's Function
-<blockquote> 
-Image search function
-
-using ~~~API
-<p><site><a href="http://www.naver.com">~~~API</a></site></p>
-</blockquote>
-<blockquote> 
-
-Image search function
-
-using ~~~API
-<p><site><a href="http://www.naver.com">~~~API</a></site></p>
-</blockquote>
-<blockquote> 
-
-Image search function
-
-using ~~~API
-<p><site><a href="http://www.naver.com">~~~API</a></site></p>
-</blockquote>
-
-## More
-Sever Address: http://mebot.kro.kr/
-
+각자 개인 폴더사용 후 합칠 예정...
