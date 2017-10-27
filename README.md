@@ -5,7 +5,9 @@ This wiki is a brief introduction to MeBot's implementation and features.
 Mebot is chatbot for a convenient life.
 
 <img src="http://kakao.mebot.kro.kr/etc/mebot.png" width="36%"></img>
-<p>State: Disable friend addon function</p>
+<p>State: Disable friend search function</p>
+But You can add a friend by clicking on this link. 
+<p><site><a href="https://pf.kakao.com/_enfxixl">Add on Friend</a></site></p>
 
 #### Using
 - Kakao Auto Reply API 
@@ -22,20 +24,25 @@ using Cloud Vision API by Google
 
 <blockquote> 
 <p>Management Schedule function</p>
-직접 코드로 제작
+Self-producing
 </blockquote>
 
 <blockquote> 
 <p>Date notification(reminder) function</p>
-직접 코드로 제작
+Self-producing
 </blockquote>
 
 <blockquote> 
 <p> Q&A Function... </p>
-<p> ex) Gachon University's School meal's information, Weather ...</p>
-using 밥대생API or Parsing the school site, weather API.
+<p> ex) Gachon University's School meal's information, Weather information, Providing restaurants' information around the school</p>
+using 밥대생API or Parsing the school homepage, Weather API.
 </blockquote>
+
+## Development wiki reference
+* [카카오 봇 API 간단설명](https://github.com/chlee1001/MeBot/wiki/Quick-description-of-Kakao-chatbot-API)
 
 
 ## More
+PPT: http://kakao.mebot.kro.kr/etc/PPT/Me%20Bot_github_upload.pptx
+
 Sever Address: http://mebot.kro.kr/
