@@ -1,173 +1,385 @@
 /**
- * Created by http://myeonguni.com on 2016-09-04.
+
+ * Created by chlee1001 on 2017-10-17.
+
  */
 
 module.exports = function(app, fs)
-{	
+
+{
+
+	//네이버 TTS 용 패키지 웹 요청 용
+
+	var request = require('request');
+
+
+
+	//카카오톡 파싱용 패키지
+
+	var bodyParser = require('body-parser');
+
+	var client_id = 'jGddVefbv4vkbp6ZdIGv';//'당신의 네이버 API ID';
+
+	var client_secret = 'zQsi6SaVMy';//'당신의 네이버 API 암호키';
+
+	var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+
+	var flag =0; //번역기가 처음인지 아닌지
+
+	
+
 	// 키보드
+
 	app.get('/keyboard', function(req, res){
+
         fs.readFile( __dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
+
            console.log( data );
+
            res.end( data );
+
         });
+
     });
-	
+
 	// 메시지
+
 	app.post('/message', function(req, res){
-		var result = {  };
+
+		const _obj = {
+
+        user_key: req.body.user_key,
+
+        type: req.body.type,
+
+        content: req.body.content
+
+		};
+
+		console.log(_obj.content)
+
 		
-		// CHECK REQ VALIDITY
-        if(!req.body["user_key"] || !req.body["type"] || !req.body["content"]){
-            result["success"] = 0;
-            result["error"] = "invalid request";
-			res.json(result);
-            return;
-        }
-		
-		// 초기 keyboard 버튼일 경우(도움말||시작하기||만든이)
-		if(req.body["content"] == "도움말" || req.body["content"] == "사진찾기" || req.body["content"] == "번역기" || req.body["content"] == "만든이"){
-			fs.readFile( __dirname + "/../data/message.json", 'utf8',  function(err, data){
-				var messages = JSON.parse(data);
-				// 각 keyboard 버튼에 따른 응답 메시지 설정
-				if(req.body["content"] == "도움말"){
-					messages["message"] = {"text" : "얻고 싶은 이미지파일의 키워드를 검색하시면 자동으로 해당 이미지파일이 반환됩니다."};
-				}else if(req.body["content"] == "사진찾기"){
-					messages["message"] = {"text" : "오늘 하루도 행복한 하루되세요. *^^*"};
-				}else if(req.body["content"] == "번역기"){
-				var square = require('./square.js');
-				var mySquare = square(2);
-				messages["message"] = {"text" : "The area of my square is " + mySquare.area()};
-				}else{
-					messages["message"] = {"text" : "네트워크 텀프"};
-				}
-				fs.writeFile(__dirname + "/../data/message.json",
-							 JSON.stringify(messages, null, '\t'), "utf8", function(err, data){
-				})
-				fs.readFile( __dirname + "/../data/message.json", 'utf8', function (err, data) {
-					// 결과 로그 출력
-					console.log("Request_user_key : "+req.body["user_key"]);
-					console.log("Request_type : keyboard - "+req.body["content"]);
-					res.end(data);
-					return;
-				})
-			})
-		}else { // 아닐 경우 이미지검색 실시
-			var request = require('request'); //get방식으로 request에 대한 response를 받기위해
-			var encodeURISafe = require('encodeuri-safe'); //get방식에 쓰일 파라미터 값을 인코딩하기 위해
-			var param = encodeURISafe.encodeURIComponent(req.body["content"]);
-			var options = {
-			  url: 'https://openapi.naver.com/v1/search/image.xml?query='+param+'&start=1&display=1',
-			  headers: {
-				'User-Agent': 'curl/7.43.0',
-				'X-Naver-Client-Id': 'jGddVefbv4vkbp6ZdIGv', //네이버 OpenAPI에서 발급받은 Client-Id 삽입
-				'X-Naver-Client-Secret': 'zQsi6SaVMy' //네이버 OpenAPI에서 발급받은 Client-Secret 삽입
-			  }
+
+		if(_obj.content == '시작하기')
+
+		{
+
+			let massage = {
+
+				"message": {
+
+					"text": '지금은 번역기만...'
+
+				} ,
+
+				"keyboard": {
+
+					"type": "buttons",
+
+					"buttons": [
+
+						"번역기",
+
+						"돌아가기"
+
+					]
+
+				} 
+
 			};
-						
-			function callback(error, response, body) {
-				// 에러 체크
-				if(error) return console.log('Error:', error);
-				// 상태 값 체크
-				if(response.statusCode !== 200)	return console.log('Invalid Status Code Returned:', response.statusCode);
-				
-				// 반환 값에서 이미지 url만 추출
-				body = body.substring(body.indexOf("<thumbnail>")+11, body.indexOf("</thumbnail>"));
-				console.log('test'+body);
-				var bodyTemp = body;
-				body = 	{
-							"photo": {
-								"url": body,
-								"width": 640,
-								"height": 480
-							}
-						};
-				
-				// 파일 입출력
-				fs.readFile( __dirname + "/../data/messageImg.json", 'utf8',  function(err, data){
-					var messages = JSON.parse(data);
-					// 이미지검색 결과 저장 및 번환
-					messages["message"] = body;
-					fs.writeFile(__dirname + "/../data/messageImg.json",
-								 JSON.stringify(messages, null, '\t'), "utf8", function(err, data){
-					})
-					fs.readFile( __dirname + "/../data/messageImg.json", 'utf8', function (err, data) {
-						// 결과 로그 출력
-						console.log("Request_user_key : "+req.body["user_key"]);
-						console.log("ImgURL : "+bodyTemp);
-						res.end(data);
-						return;
-					})
-				})
-			}
+
 			
-			request(options, callback);
+
+			// 카톡으로 전송
+
+			res.set({
+
+				'content-type': 'application/json'
+
+			}).send(JSON.stringify(massage));
+
 		}
-    });
+
+		else if(_obj.content == '도움말')
+
+		{
+
+			let massage = {
+
+				"message": {
+
+					"text": "나는 미봇.. 도움말은 준비중"
+
+				},
+
+				"photo": {
+
+					"url": "http://52.78.69.152/img_m.jpg",
+
+					"width": 640,
+
+					"height": 640
+
+				},
+
+				"keyboard": {
+
+					"type": "buttons",
+
+					"buttons": [
+
+						"시작하기",
+
+						"도움말"
+
+					]
+
+				}
+
+			};
+
+			// 카톡으로 전송
+
+			res.set({
+
+				'content-type': 'application/json'
+
+			}).send(JSON.stringify(massage));
+
+		}
+
+		else if(_obj.content == '메뉴')
+
+		{
+
+			let massage = {
+
+				"message": {
+
+					"text": "안녕 나는 미봇이야"
+
+				},
+
+				"keyboard": {
+
+				"type": "buttons",
+
+				"buttons": [
+
+					"시작하기",
+
+					"도움말"
+
+				]
+
+			}
+
+			};
+
+			res.set({
+
+				'content-type': 'application/json'
+
+			}).send(JSON.stringify(massage));
+
+		}
+
+		else if(_obj.content == '!취소')
+
+		{
+
+			flag = 0;
+
+			let massage = {
+
+				"message": {
+
+					"text": "취소됨!"
+
+				},
+
+				"keyboard": {
+
+				"type": "buttons",
+
+				"buttons": [
+
+					"시작하기",
+
+					"도움말"
+
+				]
+
+			}
+
+			};
+
+			res.set({
+
+				'content-type': 'application/json'
+
+			}).send(JSON.stringify(massage));
+
+		}
+
+		else
+
+		{
+
+			if(flag == 0){
+
+			flag =1;
+
+			let massage = {
+
+				"message": {
+
+					"text": "안녕 나는 미봇번역기야! 사용방법 (돌아갈려면 '!취소')"
+
+				}
+
+			};
+
+			res.set({
+
+				'content-type': 'application/json'
+
+			}).send(JSON.stringify(massage));
+
+			}
+
+			else{
+
+				var options = {
+
+					url: api_url,
+
+					//한국어(source : ko) > 영어 (target : en ), 카톡에서 받은 메시지(text)
+
+					form: {'source':'ko', 'target':'en', 'text':req.body.content},
+
+					headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+
+				};
+
+			//네이버로 번역하기 위해 전송(post)
+
+			request.post(options, function (error, response, body) {
+
+			//번역이 성공하였다면.
+
+			if (!error && response.statusCode == 200) {
+
+				//json 파싱
+
+				var objBody = JSON.parse(response.body);
+
+				//번역된 메시지
+
+				console.log(objBody.message.result.translatedText);
+
+
+
+				//카톡으로 번역된 메시지를 전송하기 위한 메시지
+
+				let massage = {
+
+					"message": {
+
+						"text": objBody.message.result.translatedText
+
+					},
+
+				};
+
+				//카톡에 메시지 전송
+
+				res.set({
+
+					'content-type': 'application/json'
+
+				}).send(JSON.stringify(massage));
+
 	
-	// 친구추가
-	app.post('/friend', function(req, res){
-        var result = {  };
-		
-		// 요청 param 체크
-        if(!req.body["user_key"]){
-            result["success"] = 0;
-            result["error"] = "invalid request";
-            res.json(result);
-            return;
-        }
-		
-		// 파일 입출력
-        fs.readFile( __dirname + "/../data/friend.json", 'utf8',  function(err, data){
-            var users = JSON.parse(data);
-			// 이미 존재하는 친구일 경우
-            if(users[req.body["user_key"]]){
-                result["success"] = 0;
-                result["error"] = "duplicate";
-                res.json(result);
-                return;
-            }
-            // 친구추가
-            users[req.body["user_key"]] = req.body;
-            fs.writeFile(__dirname + "/../data/friend.json",
-                         JSON.stringify(users, null, '\t'), "utf8", function(err, data){
-                result = 200;
-                res.json(result);
-                return;
-            })
-        })
-    });
+
+			} else {
+
+					//네이버에서 메시지 에러 발생
+
+					res.status(response.statusCode).end();
+
+					console.log('error = ' + response.statusCode);
+
+
+
+					let massage = {
+
+						"message": {
+
+							"text": response.statusCode
+
+						},
+
+					};
+
+					//카톡에 메시지 전송 에러 메시지
+
+					res.set({
+
+						'content-type': 'application/json'
+
+					}).send(JSON.stringify(massage));
+
+
+
+				}
+
+				});
+
+			}
+
+		}
+
+
+
+	});	
+
 	
-	// 친구삭제(차단)
-	app.delete('/friend/:user_key', function(req, res){
-        var result = { };
-		
-        // 파일 입출력
-        fs.readFile(__dirname + "/../data/friend.json", "utf8", function(err, data){
-            var users = JSON.parse(data);
- 
-            // 존재하지 않는 친구일 경우
-            if(!users[req.params.user_key]){
-                result["success"] = 0;
-                result["error"] = "not found";
-                res.json(result);
-                return;
-            }
-			// 친구 삭제
-            delete users[req.params.user_key];
-            fs.writeFile(__dirname + "/../data/friend.json",
-                         JSON.stringify(users, null, '\t'), "utf8", function(err, data){
-                result = 200;
-                res.json(result);
-                return;
-            })
-        })
-    })
+
+	app.post('/friend', (req, res) => {
+
+    const user_key = req.body.user_key;
+
+    console.log(`${user_key}님이 채팅방에 참가했습니다.`);
+
+    
+
+    res.set({
+
+        'content-type': 'application/json'
+
+    }).send(JSON.stringify({success:true}));
+
+	});
+
 	
-	// 채팅방 나가기
-	app.delete('/chat_room/:user_key', function(req, res){
-        var result = { };
-		result = 200;
-		res.json(result);
-		return;
-    })
+
+	app.delete('/chat_room/:user_key', (req, res) => {
+
+    user_key = req.params.user_key;
+
+    console.log(`${user_key}님이 쳇팅방에서 나갔습니다.`);
+
+
+
+    res.set({
+
+        'content-type': 'application/json'
+
+    }).send(JSON.stringify({success:true}));
+
+	});
+
+
+
 }
