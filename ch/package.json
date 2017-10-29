@@ -2,12 +2,13 @@
   "name": "mebot",
   "version": "1.0.0",
   "dependencies": {
-    "express": "~4.13.1",
-    "ejs": "~2.4.1",
+    "@google-cloud/vision": "^0.12.0",
     "body-parser": "~1.14.2",
+    "ejs": "~2.4.1",
+    "encodeuri-safe": "~0.0.1",
+    "express": "~4.13.1",
     "express-session": "~1.13.0",
-    "request": "~2.74.0",
-    "encodeuri-safe": "~0.0.1"
+    "request": "~2.74.0"
   },
   "scripts": {
     "start": "forever start server.js"
