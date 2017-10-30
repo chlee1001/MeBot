@@ -1,8 +1,7 @@
 /**
  * Created by chlee1001 on 2017-10-30.
  */
-module.exports = function (content) {
-	var result;
+module.exports.papago = function (content, callback) {
 	//네이버 TTS 용 패키지 웹 요청 용
 	var request = require('request');
 
@@ -42,22 +41,21 @@ module.exports = function (content) {
 				},
 			};
 			//카톡에 메시지 전송
-
+			return callback(message);
 
 		} else {
-			//네이버에서 메시지 에러 발생
+			 //네이버에서 메시지 에러 발생
 			res.status(response.statusCode).end();
 			console.log('error = ' + response.statusCode);
 
 			let message = {
-				"message": {
-					"text": response.statusCode
-				},
+			"message": {
+			"text": response.statusCode
+			},
 			};
 			//카톡에 메시지 전송 에러 메시지
 			return message;
-
+			 
 		}
 	});
-
 }

@@ -5,9 +5,6 @@ module.exports = function (app, fs) {
 	// User Modules
 	var main = require('./main'); // 메인화면으로..
 
-
-	var flag = 0; //번역기가 처음인지 아닌지
-
 	// 키보드
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
@@ -97,27 +94,17 @@ module.exports = function (app, fs) {
 			}).send(JSON.stringify(massage));
 
 		} else if (_obj.content.indexOf('!') > -1) {
+			var result;
 			var content = _obj.content;
-			var translate = require('./translate')(content);
-			let message = {
-				"message": {
-					"text": "준비중이야..."
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"시작하기",
-						"사용방법",
-						"문의하기",
-					]
-				}
-			};
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+			var translate = require('./translate');
+			translate.papago(content, function (result) {
+				console.log(result);
 
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 		}
-
 	});
 
 	app.post('/friend', (req, res) => {
