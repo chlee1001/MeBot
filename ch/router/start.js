@@ -3,7 +3,7 @@
  */
 module.exports = function (app, fs) {
 	// User Modules
-	var main = require('./main'); // 메인화면으로..
+	var main = require('./functions/main'); // 메인화면으로..
 
 	// 키보드
 	app.get('/keyboard', function (req, res) {
@@ -96,7 +96,7 @@ module.exports = function (app, fs) {
 		} else if (_obj.content.indexOf('!') > -1) {
 			var result;
 			var content = _obj.content;
-			var translate = require('./translate');
+			var translate = require('./functions/translate');
 			translate.papago(content, function (result) {
 				console.log(result);
 
