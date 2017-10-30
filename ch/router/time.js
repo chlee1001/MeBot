@@ -13,6 +13,7 @@ module.exports = function (content) {
 		"keyboard": {
 			"type": "buttons",
 			"buttons": [
+				"학식",
 				"번역기",
 				"시간",
 				"사진",

@@ -23,13 +23,14 @@ module.exports = function (app, fs) {
 		console.log(_obj.content)
 
 		if (_obj.content == '시작하기') {
-			let massage = {
+			let message = {
 				"message": {
 					"text": '안녕 나는 미봇이야'
 				},
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
+						"학식",
 						"번역기",
 						"시간",
 						"사진",
@@ -41,7 +42,37 @@ module.exports = function (app, fs) {
 			// 카톡으로 전송
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(massage));
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content == "학식") {
+			let message = {
+				"message": {
+					"text": '식당을 골라주세요!'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"비전타워",
+						"창조관",
+						"아름관",
+						"돌아가기"
+					]
+				}
+			};
+			// 카톡으로 전송
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+		} else if (_obj.content == "비전타워") {
+			var result = '';
+			var meal1 = require('./meal/mealVisionTower');
+			meal1.visionTower(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 
 		} else if (_obj.content == "돌아가기") {
 			res.set({
@@ -55,28 +86,6 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(time));
 
-		} else if (_obj.content == '도움말') {
-			let massage = {
-				"message": {
-					"text": "나는 미봇.. 도움말은 준비중"
-				},
-				"photo": {
-					"url": "http://52.78.69.152/img_m.jpg",
-					"width": 640,
-					"height": 640
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"시작하기",
-						"도움말"
-					]
-				}
-			};
-			// 카톡으로 전송
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(massage));
 		} else if (_obj.content == '/취소') {
 			flag = 0;
 
@@ -104,7 +113,32 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
+		} else if (_obj.content == '사용방법') {
+			let message = {
+				"message": {
+					"text": "나는 미봇.. 도움말은 준비중",
+					"photo": {
+						"url": "http://13.124.240.82/MeBot/img/tmp.jpg",
+						"width": 640,
+						"height": 640
+					}
+				},
+
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"시작하기",
+						"사용방법",
+						"문의하기"
+					]
+				}
+			};
+			// 카톡으로 전송
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
 		}
+
 	});
 
 	app.post('/friend', (req, res) => {
