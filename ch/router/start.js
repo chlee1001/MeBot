@@ -47,7 +47,7 @@ module.exports = function (app, fs) {
 		} else if (_obj.content == "학식") {
 			let message = {
 				"message": {
-					"text": '식당을 골라주세요!'
+					"text": '식당을 골라주세요! (컴온)'
 				},
 				"keyboard": {
 					"type": "buttons",
@@ -118,7 +118,7 @@ module.exports = function (app, fs) {
 				"message": {
 					"text": "나는 미봇.. 도움말은 준비중",
 					"photo": {
-						"url": "http://13.124.240.82/MeBot/img/tmp.jpg",
+						"url": 'http://kakao.mebot.kro.kr/MeBot/img/tmp.jpg',
 						"width": 640,
 						"height": 640
 					}
@@ -137,6 +137,12 @@ module.exports = function (app, fs) {
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
+		} else if (_obj.content == '문의하기') {
+			var qna = require('./qna')();
+
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(qna));
 		}
 
 	});
