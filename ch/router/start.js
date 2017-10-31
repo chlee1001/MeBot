@@ -65,8 +65,19 @@ module.exports = function (app, fs) {
 			}).send(JSON.stringify(message));
 		} else if (_obj.content == "비전타워") {
 			var result = '';
-			var meal1 = require('./meal/mealVisionTower');
-			meal1.visionTower(function (result) {
+			var meal = require('./meal/mealVisionTower');
+			meal.visionTower(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
+
+		} else if (_obj.content == "창조관") {
+			var result = '';
+			var meal = require('./meal/test');
+			meal.test(function (result) {
 				console.log(result);
 
 				res.set({
