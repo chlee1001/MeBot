@@ -37,8 +37,8 @@ module.exports.visionTower = function (callback) {
 			console.log(result);
 
 			//console.log(name,'-', menuDescription);
-			//	console.log(menuName1,'\n',menuDetail1,'\n');
-			//	console.log(menuName2,'\n',menuDetail2);
+			//console.log(menuName1,'\n',menuDetail1,'\n');
+			//console.log(menuName2,'\n',menuDetail2);
 
 
 			//카톡으로 번역된 메시지를 전송하기 위한 메시지

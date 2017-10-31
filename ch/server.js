@@ -8,7 +8,7 @@ var session = require('express-session');
 var fs = require("fs")
  
 app.get('/',function(req, res) {
-	res.send("Hellow World");
+	res.send("Hello World");
 });
 
 var server = app.listen(3000, function(){ // port 3000으로 서버 실행
