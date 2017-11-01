@@ -3,8 +3,9 @@
  */
 module.exports = function (app, fs) {
 	// User Modules
-	var main = require('./functions/main'); // 메인화면으로..
-
+	var main = require('./functions/main'); // 처음으로..
+	var menu = require('./functions/menu'); // 메뉴..
+	
 	// 키보드
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
@@ -31,10 +32,11 @@ module.exports = function (app, fs) {
 					"type": "buttons",
 					"buttons": [
 						"학식",
+						"식당추천",
 						"날씨",
 						"번역기",
 						"사진",
-						"돌아가기"
+						"처음으로"
 					]
 				}
 			};
@@ -74,7 +76,7 @@ module.exports = function (app, fs) {
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(qna));
-			
+
 		} else if (_obj.content == "학식") {
 			let message = {
 				"message": {
@@ -94,7 +96,7 @@ module.exports = function (app, fs) {
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
-			
+
 		} else if (_obj.content == "비전타워") {
 			var result = '';
 			var meal = require('./meal/mealVisionTower');
@@ -115,7 +117,6 @@ module.exports = function (app, fs) {
 					"type": "buttons",
 					"buttons": [
 						"비전타워",
-						"창조관",
 						"아름관",
 						"돌아가기"
 					]
@@ -136,12 +137,38 @@ module.exports = function (app, fs) {
 					"buttons": [
 						"비전타워",
 						"창조관",
-						"아름관",
 						"돌아가기"
 					]
 				}
 			};
 			// 카톡으로 전송
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content == '식당추천' || _obj.content == '더 추천받기') {
+			var result = '';
+			var meal = require('./meal/restaurantRandom');
+			meal.restaurant(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
+
+		} else if (_obj.content == '식당 리스트') {
+			let message = {
+				"message": {
+					"text": "서버 트래픽 초과 문제로 수정중입니다(훌쩍)(훌쩍)"
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"돌아가기"
+					]
+				}
+			};
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
@@ -158,23 +185,30 @@ module.exports = function (app, fs) {
 			})
 
 		} else if (_obj.content == '돌아가기' || _obj.content == '/취소') {
+
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(menu()));
+
+		} else if (_obj.content == '처음으로') {
+
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(main()));
 
 		} else if (_obj.content == '번역기') {
-			let massage = {
+			let message = {
 				"message": {
 					"text": "안녕 나는 미봇번역기야! 사용방법 !말, (돌아갈려면 '/취소')"
 				}
 			};
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(massage));
+			}).send(JSON.stringify(message));
 
 		} else if (_obj.content.indexOf('!') > -1) {
 			var result;
-			var content = _obj.content.replace('!','');
+			var content = _obj.content.replace('!', '');
 			var translate = require('./functions/translate');
 			translate.papago(content, function (result) {
 				console.log(result);

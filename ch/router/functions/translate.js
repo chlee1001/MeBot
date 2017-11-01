@@ -7,8 +7,8 @@ module.exports.papago = function (content, callback) {
 
 	//카카오톡 파싱용 패키지
 	var bodyParser = require('body-parser');
-	var client_id = 'jGddVefbv4vkbp6ZdIGv'; //'당신의 네이버 API ID';
-	var client_secret = 'zQsi6SaVMy'; //'당신의 네이버 API 암호키';
+	var client_id = 'jGddVefbv4vkbp6ZdIGv';
+	var client_secret = 'zQsi6SaVMy';
 	var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
 
 	var options = {
@@ -44,18 +44,16 @@ module.exports.papago = function (content, callback) {
 			return callback(message);
 
 		} else {
-			 //네이버에서 메시지 에러 발생
-			res.status(response.statusCode).end();
+			//네이버에서 메시지 에러 발생
 			console.log('error = ' + response.statusCode);
 
 			let message = {
-			"message": {
-			"text": response.statusCode
-			},
+				"message": {
+					"text": response.statusCode
+				},
 			};
 			//카톡에 메시지 전송 에러 메시지
-			return message;
-			 
+			return callback(message);
 		}
 	});
 }

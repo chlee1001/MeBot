@@ -4,14 +4,14 @@
 module.exports = function () {
 	let message = {
 		"message": {
-			"text": '메인화면'
+			"text": '처음으로'
 		},
 		"keyboard": {
 			"type": "buttons",
 			"buttons": [
 				"시작하기",
 				"사용방법",
-				"문의하기",
+				"문의하기"
 			]
 		}
 	};
