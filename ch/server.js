@@ -6,6 +6,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var fs = require("fs")
+var db = require('./db.js');
  
 app.get('/',function(req, res) {
 	res.send("Hello World");
@@ -17,10 +18,6 @@ var server = app.listen(3000, function(){ // port 3000으로 서버 실행
  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(session({
- secret: '@#@$MYSIGN#@$#$',
- resave: false,
- saveUninitialized: true
-}));
 
 var router = require('./router/start')(app, fs);
+//db();

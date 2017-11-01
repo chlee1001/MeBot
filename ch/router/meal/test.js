@@ -2,7 +2,7 @@ var https = require('https');
 
 
 
-const token = 'eKQSrvdomvDQ0LeYLjsMSrzk8HdZS6kevWXUDW7yn5Cgz37BgF ';
+const token = 'eKQSrvdomvDQ0LeYLjsMSrzk8HdZS6kevWXUDW7yn5Cgz37BgF';
 
 
 var options = {
