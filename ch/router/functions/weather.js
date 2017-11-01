@@ -37,10 +37,11 @@ module.exports.weather = function (callback) {
 					"type": "buttons",
 					"buttons": [
 						"학식",
+						"식당추천",
 						"날씨",
 						"번역기",
 						"사진",
-						"돌아가기"
+						"처음으로"
 					]
 				}
 			};
