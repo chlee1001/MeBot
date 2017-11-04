@@ -6,7 +6,7 @@ module.exports.beautiful = function (callback) {
 	var request = require("request");
 	require('date-utils');
 
-	const token = 'cszpNImsBWU2aNpyPGAxQA10HBA5LbvcTH0cudcGD0yUMagTcR';
+	const token = '9SuhlhFnlYnT9IVRKIHsLGaC42DbXhA6pAfsyNpvhhJ9OS8l2v';
 	var dDate = new Date();
 	var today = dDate.toFormat('YYYY-MM-DD');
 	console.log(today);
