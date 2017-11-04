@@ -99,7 +99,7 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content == "비전타워") {
 			var result = '';
-			var meal = require('./meal/mealVisionTower');
+			var meal = require('./meal/school/mealVisionTower');
 			meal.visionTower(function (result) {
 				console.log(result);
 
@@ -109,42 +109,26 @@ module.exports = function (app, fs) {
 			})
 
 		} else if (_obj.content == "창조관") {
-			let message = {
-				"message": {
-					"text": '아직 준비중이에요...(훌쩍)'
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"비전타워",
-						"아름관",
-						"돌아가기"
-					]
-				}
-			};
-			// 카톡으로 전송
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+			var result = '';
+			var meal = require('./meal/school/mealCreator');
+			meal.creator(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 
 		} else if (_obj.content == "아름관") {
-			let message = {
-				"message": {
-					"text": '아직 준비중이에요...(훌쩍)'
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"비전타워",
-						"창조관",
-						"돌아가기"
-					]
-				}
-			};
-			// 카톡으로 전송
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+			var result = '';
+			var meal = require('./meal/school/mealBeautiful');
+			meal.beautiful(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 
 		} else if (_obj.content == '식당추천' || _obj.content == '더 추천받기') {
 			var result = '';
