@@ -6,18 +6,20 @@ var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var fs = require("fs")
-var db = require('./db.js');
- 
-app.get('/',function(req, res) {
+	var db = require('./db.js');
+
+app.get('/', function (req, res) {
 	res.send("Hello World");
 });
 
-var server = app.listen(3000, function(){ // port 3000으로 서버 실행
- console.log("Express server has started on port 3000") 
-});
- 
+var server = app.listen(3000, function () { // port 3000으로 서버 실행
+		console.log("Express server has started on port 3000")
+	});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 var router = require('./router/start')(app, fs);
-//db();
+
+// call DB connection
+db();

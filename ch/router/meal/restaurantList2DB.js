@@ -1,9 +1,7 @@
 /**
- * Created by chlee1001 on 2017-11-01.
+ * Created by chlee1001 on 2017-11-07.
  */
-
-//var officegen = require('officegen');
-var XLSX = require('xlsx');
+module.exports = function (app, mysql, connection) {
 var fs = require('fs');
 
 //네이버 TTS 용 패키지 웹 요청 용
@@ -14,15 +12,6 @@ var bodyParser = require('body-parser');
 var client_id = 'jGddVefbv4vkbp6ZdIGv'; //'네이버 API ID';
 var client_secret = 'zQsi6SaVMy'; //'네이버 API 암호키';
 var api_url = 'https://openapi.naver.com/v1/search/local.json';
-
-var workbook = XLSX.readFile('../../data/test.xlsx');
-	
-	var firstWSheetName = workbook.SheetNames[0];
-	var firstWSheet = workbook.Sheets[firstWSheetName];
-	
-	console.log(firstWSheet['A1'].v);
-	
-	XLSX.writeFile(workbook, 'out.xlsx');
 
 var options = {
 	url: api_url,
@@ -44,13 +33,29 @@ request.get(options, function (error, response, body) {
 		var objBody = JSON.parse(response.body);
 
 		for (var i = 0; i < 100; i++) {
-			var title = objBody.items[i].title;
-			var link = objBody.items[i].link;
-			var category = objBody.items[i].category;
-			var roadAddress = objBody.items[i].roadAddress;
+			var n_title = objBody.items[i].title;
+			var n_link = objBody.items[i].link;
+			var n_category = objBody.items[i].category;
+			var n_roadAddress = objBody.items[i].roadAddress;
 
-			var list = i + 1 + ' ' + title + category + roadAddress + link;
-			//exportToExcel(list);
+			//var list = i + 1 + ' ' + title + category + roadAddress + link;
+
+			var restaurantList = {
+				title: n_title,
+				category: n_category,
+				roadAddress: n_roadAddress,
+				link: n_link
+			};
+
+			var query = connection.query(
+					"Insert into restaurantList set ?", restaurantList,
+					function (err, result) {
+					if (err) {
+						console.log('db err: ' + err);
+						throw err;
+					}
+					console.log('success ');
+				});
 
 		}
 
@@ -62,3 +67,4 @@ request.get(options, function (error, response, body) {
 
 	}
 });
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <title>Show Data</title>
+ </head>
+ <body>
+  <h1><a href="/insert" title="데이터입력">데이터 목록</a></h1>
+<%
+    for(var i=0; i<values.length; i++){
+%>
+<p>
+아이디 : <%= values[i].id %>
+이름 : <a href="/one?id=<%= values[i].id %>" title="하나만 보기"><%= values[i].name %></a>
+나이 : <%= values[i].age %>
+주소 : <%= values[i].address %>
+<a href="/delete?id=<%= values[i].id %>" title="삭제하기">삭제 하기</a>
+</p>
+<%
+    }
+%>
+ </body>
+
+</html>
