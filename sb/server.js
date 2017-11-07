@@ -5,7 +5,7 @@ var session = require('express-session');
 var fs = require("fs")
 
 	app.get('/', function (req, res) {
-		res.send("Hello World");
+		res.send("Hello World\n This page is playground");
 	});
 
 var server = app.listen(3003, function () { // port 3003으로 서버 실행
@@ -20,4 +20,4 @@ app.use(session({
 		saveUninitialized: true
 	}));
 
-var router = require('./test')(app, fs);
+var router = require('./start')(app, fs);
