@@ -5,7 +5,7 @@ module.exports = function (app, fs) {
 	// User Modules
 	var main = require('./functions/main'); // 처음으로..
 	var menu = require('./functions/menu'); // 메뉴..
-	
+
 	// 키보드
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
@@ -144,12 +144,18 @@ module.exports = function (app, fs) {
 		} else if (_obj.content == '식당 리스트') {
 			let message = {
 				"message": {
-					"text": "서버 트래픽 초과 문제로 수정중입니다(훌쩍)(훌쩍)"
+					"text": "가천대 주변의 100개의 식당 리스트",
+					"message_button": {
+						"label": '여기야',
+						"url": 'http://kakao.mebot.kro.kr:3000/list'
+					}
 				},
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
-						"돌아가기"
+						'더 추천받기',
+						'식당 리스트',
+						'돌아가기'
 					]
 				}
 			};
@@ -201,9 +207,7 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
-
 		}
-
 	});
 
 	app.post('/friend', (req, res) => {
