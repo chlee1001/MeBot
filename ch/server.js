@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var fs = require("fs");
 var schedule = require('node-schedule');
-var restaurantListDB = require('./router/meal/restaurantList2DB.js');
+var restaurantListDB = require('./router/functions/meal/restaurantList2DB.js');
 
 app.get('/', function (req, res) {
 	res.send("Hello World");
@@ -28,5 +28,5 @@ var startDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB updat
 	});
 
 app.get('/list', function (req, res) {
-	var db = require('./router/meal/restaurantList.js')(req, res);
+	var db = require('./router/functions/meal/restaurantList.js')(req, res);
 });

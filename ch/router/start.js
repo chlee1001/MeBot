@@ -99,7 +99,7 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content == "비전타워") {
 			var result = '';
-			var meal = require('./meal/school/mealVisionTower');
+			var meal = require('./functions/meal/school/mealVisionTower');
 			meal.visionTower(function (result) {
 				console.log(result);
 
@@ -110,7 +110,7 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content == "창조관") {
 			var result = '';
-			var meal = require('./meal/school/mealCreator');
+			var meal = require('./functions/meal/school/mealCreator');
 			meal.creator(function (result) {
 				console.log(result);
 
@@ -121,7 +121,7 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content == "아름관") {
 			var result = '';
-			var meal = require('./meal/school/mealBeautiful');
+			var meal = require('./functions/meal/school/mealBeautiful');
 			meal.beautiful(function (result) {
 				console.log(result);
 
@@ -132,7 +132,7 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content == '식당추천' || _obj.content == '더 추천받기') {
 			var result = '';
-			var meal = require('./meal/restaurantRandom');
+			var meal = require('./functions/meal/restaurantRandom');
 			meal.restaurant(function (result) {
 				console.log(result);
 
