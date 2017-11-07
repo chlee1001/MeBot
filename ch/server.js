@@ -5,8 +5,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var fs = require("fs")
-	var db = require('./db.js');
+var fs = require("fs");
+var schedule = require('node-schedule');
+var restaurantListDB = require('./router/meal/restaurantList2DB.js');
 
 app.get('/', function (req, res) {
 	res.send("Hello World");
@@ -22,4 +23,10 @@ app.use(bodyParser.urlencoded());
 var router = require('./router/start')(app, fs);
 
 // call DB connection
-db();
+var startDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB update Scheduler: 매월 1일 6시
+		restaurantListDB();
+	});
+
+app.get('/list', function (req, res) {
+	var db = require('./router/meal/restaurantList.js')(req, res);
+});

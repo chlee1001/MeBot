@@ -1,64 +1,49 @@
 /**
- * Created by chlee1001 on 2017-11-01.
+ * Created by chlee1001 on 2017-11-07.
  */
 
-//var officegen = require('officegen');
-var XLSX = require('xlsx');
-var fs = require('fs');
+module.exports = function (req, res) {
+	// DataBase
+	var mysql = require("mysql");
+	var express = require('express');
+	var app = express();
 
-//네이버 TTS 용 패키지 웹 요청 용
-var request = require('request');
+	var connection = mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "1234",
+			database: "computerNetwork"
+		});
+	connection.connect(function (err) {
+		if (err) {
+			console.log('Error connecting: ' + err.stack);
+		} else
+			console.log('Connection as id ' + connection.threadId);
+	});
 
-//카카오톡 파싱용 패키지
-var bodyParser = require('body-parser');
-var client_id = 'jGddVefbv4vkbp6ZdIGv'; //'네이버 API ID';
-var client_secret = 'zQsi6SaVMy'; //'네이버 API 암호키';
-var api_url = 'https://openapi.naver.com/v1/search/local.json';
+	connection.query('SELECT * from restaurantList', function (err, rows, fields) {
+		connection.end();
+		if (!err) {
+			var data = "<html><head><title>식당리스트</title></head>"
+				data += "<h1>식당리스트</h1>"
+				data += "<table border=\"1\">"
+				data += "<tr><th>id</th><th>title</th><th>category</th></th><th>roadAddress</th></th><th>link</th></tr>"
 
-var workbook = XLSX.readFile('../../data/test.xlsx');
-	
-	var firstWSheetName = workbook.SheetNames[0];
-	var firstWSheet = workbook.Sheets[firstWSheetName];
-	
-	console.log(firstWSheet['A1'].v);
-	
-	XLSX.writeFile(workbook, 'out.xlsx');
+				for (var i in rows) {
+					data += "<tr>"
+					data += "<td>" + rows[i].id + "</td>"
+					data += "<td>" + rows[i].title + "</td>";
+					data += "<td>" + rows[i].category + "</td>";
+					data += "<td>" + rows[i].roadAddress + "</td>";
+					data += "<td>" + rows[i].link + "</td>";
+					data += "</tr>"
+				}
 
-var options = {
-	url: api_url,
-	qs: {
-		'query': '가천대맛집',
-		'display': 100,
-		'start': 1,
-		'sort': 'random'
-	},
-	headers: {
-		'X-Naver-Client-Id': client_id,
-		'X-Naver-Client-Secret': client_secret
-	}
-};
+				data += "</table></html>"
 
-request.get(options, function (error, response, body) {
-	if (!error && response.statusCode == 200) {
-		//json 파싱
-		var objBody = JSON.parse(response.body);
+				res.send(data);
+		} else
+			console.log('Error while performing Query.');
+	});
 
-		for (var i = 0; i < 100; i++) {
-			var title = objBody.items[i].title;
-			var link = objBody.items[i].link;
-			var category = objBody.items[i].category;
-			var roadAddress = objBody.items[i].roadAddress;
-
-			var list = i + 1 + ' ' + title + category + roadAddress + link;
-			//exportToExcel(list);
-
-		}
-
-		//카톡으로 메시지를 전송하기 위한 메시지
-
-
-	} else {
-		console.log('error = ' + response.statusCode);
-
-	}
-});
+}
