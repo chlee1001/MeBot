@@ -26,7 +26,10 @@ module.exports.weather = function (callback) {
 
 			var sky = objBody.weather.hourly[0].sky.name;
 			var temperature = objBody.weather.hourly[0].temperature;
-			result = sky + '\n현재 기온: ' + temperature.tc + '℃\n최고 기온: ' + temperature.tmax + '℃\n최저 기온: ' + temperature.tmin + '℃';
+			var humidity = objBody.weather.hourly[0].humidity;
+
+			result = sky + '\n현재 기온: ' + temperature.tc + '℃\n최고 기온: ' + temperature.tmax
+				 + '℃\n최저 기온: ' + temperature.tmin + '℃\n습도: ' + humidity + '%';
 
 			//카톡으로 번역된 메시지를 전송하기 위한 메시지
 			let message = {
