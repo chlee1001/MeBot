@@ -2,27 +2,27 @@
  * Created by chlee1001 on 2017-11-07.
  */
 
-//module.exports = function (app, mysql, connection) {
-// DataBase
-var mysql = require("mysql");
-var express = require('express');
-var app = express();
+module.exports = function (app, mysql, connection) {
+	// DataBase
+	var mysql = require("mysql");
+	var express = require('express');
+	var app = express();
 
-var connection = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "1234",
-		database: "computerNetwork"
+	var connection = mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "1234",
+			database: "computerNetwork"
+		});
+	connection.connect(function (err) {
+		if (err) {
+			console.log('Error connecting: ' + err.stack);
+		} else
+			console.log('Connection as id ' + connection.threadId);
 	});
-connection.connect(function (err) {
-	if (err) {
-		console.log('Error connecting: ' + err.stack);
-	} else
-		console.log('Connection as id ' + connection.threadId);
-});
 
-updateDB();
-//}
+	updateDB();
+}
 
 function updateDB() {
 	var fs = require('fs');
@@ -67,7 +67,7 @@ function updateDB() {
 					});
 			}
 
-			var setAIquery = connection.query( // AI 1로 초기화
+			var setAIquery = connection.query(// AI 1로 초기화
 					"ALTER TABLE restaurantList AUTO_INCREMENT=1 ",
 					function (err, result) {
 					if (err) {

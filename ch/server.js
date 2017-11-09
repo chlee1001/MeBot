@@ -8,6 +8,7 @@ var session = require('express-session');
 var fs = require("fs");
 var schedule = require('node-schedule');
 var restaurantListDB = require('./router/functions/meal/restaurantList2DB.js');
+var airpollutionDB = require('./router/functions/airpollution2DB.js');
 
 app.get('/', function (req, res) {
 	res.send("Hello World");
@@ -22,9 +23,13 @@ app.use(bodyParser.urlencoded());
 
 var router = require('./router/start')(app, fs);
 
-// call DB connection
-var startDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB update Scheduler: 매월 1일 6시
+// call restaurantDB connection
+var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB update Scheduler: 매월 1일 6시
 		restaurantListDB();
+	});
+
+var airpollutionDB = schedule.scheduleJob('00 30* * * *', function() {
+		airpollution2DB();
 	});
 
 app.get('/list', function (req, res) {
