@@ -1,5 +1,5 @@
 /**
- * Created by chlee1001 on 2017-10-17.
+ * Created by chlee1001 on 2017.10.17.
  */
 module.exports = function (app, fs) {
 	// User Modules
@@ -165,7 +165,7 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content == "날씨") {
 			var result = '';
-			var ww = require('./functions/weather');
+			var ww = require('./functions/weather/weather');
 			ww.weather(function (result) {
 				console.log(result);
 
@@ -186,6 +186,22 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(main()));
 
+		} else if (_obj.content.indexOf('학번') > -1) {
+			var result;
+			var content = _obj.content.replace('학번 ', '');
+			var qr = require('./functions/QR_studentID');
+			qr.studentID(content, function (result) {
+				console.log(result);
+				fs.unlink('studentID.png', function (err) { // 키톡 전송 후 파일 삭제
+					if (err)
+						throw err;
+					console.log('successfully deleted text2.txt');
+				});
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 		} else if (_obj.content == '번역기') {
 			let message = {
 				"message": {

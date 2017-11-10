@@ -1,5 +1,5 @@
 /**
- * Created by chlee1001 on 2017-10-30.
+ * Created by chlee1001 on 2017.10.30.
  */
 module.exports.papago = function (content, callback) {
 	//네이버 TTS 용 패키지 웹 요청 용

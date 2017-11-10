@@ -8,7 +8,7 @@ var session = require('express-session');
 var fs = require("fs");
 var schedule = require('node-schedule');
 var restaurantListDB = require('./router/functions/meal/restaurantList2DB.js');
-var airpollution2DB = require('./router/functions/airpollution2DB.js');
+var airpollution2DB = require('./router/functions/weather/airpollution2DB.js');
 
 app.get('/', function (req, res) {
 	res.send("Hello World");
@@ -28,7 +28,7 @@ var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB 
 		restaurantListDB();
 	});
 
-var airpollutionDB = schedule.scheduleJob('00 */20 * * * *', function() {
+var airpollutionDB = schedule.scheduleJob('00 */20 * */1 * *', function() {
 		airpollution2DB();
 	});
 

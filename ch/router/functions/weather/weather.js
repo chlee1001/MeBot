@@ -1,5 +1,5 @@
 /**
- * Created by chlee1001 on 2017-10-31.
+ * Created by chlee1001 on 2017.10.31.
  */
 
 module.exports.weather = function (callback) {
