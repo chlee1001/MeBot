@@ -1,9 +1,7 @@
-/**
- * Created by chlee1001 on 2017-10-17.
- */
+
 module.exports = function (app, fs) {
 
-	// 키보드
+	// ?�보??
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
 			console.log(data);
@@ -35,7 +33,7 @@ module.exports = function (app, fs) {
 				}
 			};
 
-			// 카톡으로 전송
+			// 카톡?�로 ?�송
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
@@ -55,7 +53,7 @@ module.exports = function (app, fs) {
 				}
 			};
 
-			// 카톡으로 전송
+			// 카톡?�로 ?�송
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
@@ -76,7 +74,7 @@ module.exports = function (app, fs) {
 				}
 			};
 
-			// 카톡으로 전송
+			// 카톡?�로 ?�송
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
@@ -86,7 +84,7 @@ module.exports = function (app, fs) {
 
 	app.post('/friend', (req, res) => {
 		const user_key = req.body.user_key;
-		console.log(`${user_key}님이 채팅방에 참가했습니다.`);
+		console.log(`${user_key}?�이 채팅방에 참�??�습?�다.`);
 
 		res.set({
 			'content-type': 'application/json'
@@ -97,7 +95,7 @@ module.exports = function (app, fs) {
 
 	app.delete ('/chat_room/:user_key', (req, res) => {
 		user_key = req.params.user_key;
-		console.log(`${user_key}님이 채팅방에서 나갔습니다.`);
+		console.log(`${user_key}?�이 채팅방에???�갔?�니??`);
 
 		res.set({
 			'content-type': 'application/json'
