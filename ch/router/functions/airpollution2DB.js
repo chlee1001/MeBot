@@ -21,10 +21,10 @@ module.exports = function (app, mysql, connection) {
 			console.log('Connection as id ' + connection.threadId);
 	});
 
-	updateDB();
+	updateDB(connection);
 }
 
-function updateDB() {
+function updateDB(connection) {
 	var xml2js = require('xml2js');
 	var parser = new xml2js.Parser();
 	var request = require('request');
@@ -47,7 +47,7 @@ function updateDB() {
 
 				// table 초기화
 				var deleteQuery = connection.query(
-						"DELETE FROM airpollution WHERE id =" + 1,
+						"DELETE FROM airpollution WHERE id = 1",
 						function (err, result) {
 						if (err) {
 							console.log('db err: ' + err);

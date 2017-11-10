@@ -21,10 +21,10 @@ module.exports = function (app, mysql, connection) {
 			console.log('Connection as id ' + connection.threadId);
 	});
 
-	updateDB();
+	updateDB(connection);
 }
 
-function updateDB() {
+function updateDB(connection) {
 	var fs = require('fs');
 
 	//네이버 TTS 용 패키지 웹 요청 용
