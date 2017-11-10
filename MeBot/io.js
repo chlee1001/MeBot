@@ -17,14 +17,14 @@ module.exports = function (server) {
 
 			} else if (msg == '날씨') {
 				var result = '';
-				var ww = require('./routes/weather');
+				var ww = require('./routes/homepage/weather');
 				ww.weather(function (result) {
 					console.log(result);
 					socket.emit('other message', result);
 				})
 			} else if (msg == '학식') {
 				var result = '';
-				var meal = require('./routes/meal');
+				var meal = require('./routes/homepage/meal');
 				meal.visionTower(function (result) {
 					console.log(result);
 					socket.emit('other message', result);
