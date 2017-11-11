@@ -23,24 +23,12 @@ module.exports = function (app, fs) {
 		};
 		console.log(_obj.content)
 
-		if (_obj.content == '시작하기') {
+		if (_obj.content == '시작하기') { // 시작하기
 			let message = {
 				"message": {
-					"text": '안녕 나는 미봇이야'
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"학식",
-						"식당추천",
-						"날씨",
-						"번역기",
-						"사진",
-						"처음으로"
-					]
+					"text": '안녕 나는 미봇이야!!(씨익)(신나)\n내가 처음이면 메뉴얼이라고 입력해봐!!(제발)\n'
 				}
 			};
-
 			// 카톡으로 전송
 			res.set({
 				'content-type': 'application/json'
@@ -51,7 +39,7 @@ module.exports = function (app, fs) {
 				"message": {
 					"text": "나는 미봇.. 도움말은 준비중",
 					"photo": {
-						"url": 'http://kakao.mebot.kro.kr/MeBot/public/images/tmp.jpg',
+						"url": 'http://kakao.mebot.kro.kr/MeBot/img/tmp.jpg',
 						"width": 640,
 						"height": 640
 					}
@@ -174,7 +162,7 @@ module.exports = function (app, fs) {
 				}).send(JSON.stringify(result));
 			})
 
-		} else if (_obj.content == '돌아가기' || _obj.content == '/취소') {
+		} else if (_obj.content == '메뉴얼' ||_obj.content == '메뉴' ||_obj.content == '돌아가기' || _obj.content == '/취소') {
 
 			res.set({
 				'content-type': 'application/json'
@@ -186,12 +174,17 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(main()));
 
-		}else if (_obj.content.indexOf('학번') > -1) {
+		} else if (_obj.content.indexOf('학번') > -1) {
 			var result;
 			var content = _obj.content.replace('학번 ', '');
 			var qr = require('./functions/QR_studentID');
 			qr.studentID(content, function (result) {
 				console.log(result);
+				fs.unlink('studentID.png', function (err) { // 키톡 전송 후 파일 삭제
+					if (err)
+						throw err;
+					console.log('successfully deleted text2.txt');
+				});
 
 				res.set({
 					'content-type': 'application/json'
@@ -218,6 +211,17 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
+		}
+		else{
+			let message = {
+				"message": {
+					"text": '내가 아직 모르는 말이야!!\n사용법을 잘 모르겠으면 메뉴얼이라고 입력해봐!(제발)\n'
+				}
+			};
+			// 카톡으로 전송
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
 		}
 	});
 

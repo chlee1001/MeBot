@@ -4,7 +4,7 @@
 module.exports = function () {
 	let message = {
 		"message": {
-			"text": '메뉴'
+			"text": '메뉴얼 설명은 준비중이야.. 그래서 그냥 버튼을 보여줄게'
 		},
 		"keyboard": {
 			"type": "buttons",
