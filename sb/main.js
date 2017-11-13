@@ -1,6 +1,3 @@
-/**
- * Created by chlee1001 on 2017-10-30.
- */
 module.exports = function () {
 	let message = {
 		"message": {

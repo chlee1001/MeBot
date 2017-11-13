@@ -1,6 +1,3 @@
-/**
- * Created by chlee1001 on 2017-10-17.
- */
 module.exports = function (app, fs) {
 	// User Modules
 	var main = require('./main'); // 처음으로..
@@ -31,11 +28,8 @@ module.exports = function (app, fs) {
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
-						"학식",
-						"식당추천",
-						"날씨",
-						"번역기",
-						"사진",
+						"사진분석",
+						"사진분석 예시",
 						"처음으로"
 					]
 				}
@@ -70,13 +64,6 @@ module.exports = function (app, fs) {
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
-		} else if (_obj.content == '문의하기') {
-			var qna = require('./qna')();
-
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(qna));
-
 		} else if (_obj.content == '돌아가기' || _obj.content == '/취소') {
 
 			res.set({
@@ -89,6 +76,22 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(main()));
 
+		} else if (_obj.content == '사진분석') {
+			
+			let message = {
+				"message": {
+					"text": '방법을 모르신다면 >사진분석 예시< 버튼을 눌러주세요!'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"사진분석",
+						"사진분석 예시",
+						"처음으로"
+					]
+				}
+			};
+			
 		} else if (_obj.content.indexOf('!') > -1) {
 			var result;
 			var content = _obj.content.replace('!', '');
