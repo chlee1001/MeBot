@@ -47,7 +47,7 @@ var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB 
 		restaurantListDB();
 	});
 
-var airpollutionDB = schedule.scheduleJob('00 */20 * */1 * *', function() {
+var airpollutionDB = schedule.scheduleJob('10 * * * *', function() {
 		airpollution2DB();
 	});
 

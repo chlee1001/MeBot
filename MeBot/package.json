@@ -14,11 +14,15 @@
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",
     "node-schedule": "^1.2.5",
+    "qrcode": "^1.0.0",
     "request": "^2.83.0",
     "require": "^2.4.20",
-    "serve-favicon": "^2.4.5"
+    "rimraf": "^2.6.2",
+    "serve-favicon": "^2.4.5",
+    "xml2js": "^0.4.19"
   }
 }

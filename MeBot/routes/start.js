@@ -162,7 +162,7 @@ module.exports = function (app, fs) {
 				}).send(JSON.stringify(result));
 			})
 
-		} else if (_obj.content == '메뉴얼' ||_obj.content == '메뉴' ||_obj.content == '돌아가기' || _obj.content == '/취소') {
+		} else if (_obj.content == '메뉴얼' || _obj.content == '메뉴' || _obj.content == '돌아가기' || _obj.content == '/취소') {
 
 			res.set({
 				'content-type': 'application/json'
@@ -180,12 +180,6 @@ module.exports = function (app, fs) {
 			var qr = require('./functions/QR_studentID');
 			qr.studentID(content, function (result) {
 				console.log(result);
-				fs.unlink('studentID.png', function (err) { // 키톡 전송 후 파일 삭제
-					if (err)
-						throw err;
-					console.log('successfully deleted text2.txt');
-				});
-
 				res.set({
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
@@ -211,8 +205,7 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
-		}
-		else{
+		} else {
 			let message = {
 				"message": {
 					"text": '내가 아직 모르는 말이야!!\n사용법을 잘 모르겠으면 메뉴얼이라고 입력해봐!(제발)\n'
