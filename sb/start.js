@@ -92,6 +92,10 @@ module.exports = function (app, fs) {
 				}
 			};
 			
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+			
 		} else if (_obj.content.indexOf('!') > -1) {
 			var result;
 			var content = _obj.content.replace('!', '');
