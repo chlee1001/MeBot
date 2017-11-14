@@ -1,7 +1,7 @@
 
 module.exports = function (app, fs) {
-
 	// ?¤ë³´??
+
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
 			console.log(data);
@@ -19,51 +19,31 @@ module.exports = function (app, fs) {
 		console.log(_obj.content)
 
 		if (_obj.content == 'a') {
-			let message = {
-				"message": {
-					"text": 'a'
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"a",
-						"b",
-						"c"
-					]
-				}
-			};
-
-			// ì¹´í†¡?¼ë¡œ ?„ì†¡
+			var date = require ('./date/special')();			// ì¹´í†¡?¼ë¡œ ?„ì†¡
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+			}).send(JSON.stringify(date));  //special date ¿¬°á 
 
 		} else if (_obj.content == 'b') {
-			let message = {
-				"message": {
-					"text": 'b'
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"a",
-						"b",
-						"c"
-					]
-				}
-			};
-
-			// ì¹´í†¡?¼ë¡œ ?„ì†¡
+			
+		var fun2 = require ('./date/fun2')();			// ì¹´í†¡?¼ë¡œ ?„ì†¡
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+			}).send(JSON.stringify(fun2));  //special date ¿¬°á 
+
 
 		}
 		else {
 			let message = {
 				"message": {
-					"text": 'cccc'
+					"text": "picture",
+					"photo": {
+						"url": "www.naver.com",
+						"width": 640,
+						"height": 640
+					}
 				},
+
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
@@ -84,7 +64,7 @@ module.exports = function (app, fs) {
 
 	app.post('/friend', (req, res) => {
 		const user_key = req.body.user_key;
-		console.log(`${user_key}?˜ì´ ì±„íŒ…ë°©ì— ì°¸ê??ˆìŠµ?ˆë‹¤.`);
+		console.log(`${user_key}`);
 
 		res.set({
 			'content-type': 'application/json'
@@ -95,7 +75,7 @@ module.exports = function (app, fs) {
 
 	app.delete ('/chat_room/:user_key', (req, res) => {
 		user_key = req.params.user_key;
-		console.log(`${user_key}?˜ì´ ì±„íŒ…ë°©ì—???˜ê°”?µë‹ˆ??`);
+		console.log(`${user_key}`);
 
 		res.set({
 			'content-type': 'application/json'
