@@ -75,17 +75,7 @@ function updateDB(connection) {
 						}
 						//console.log('Del_success ');
 					});
-
-				var setAIquery = connection.query(// AI 1로 초기화
-						"ALTER TABLE airpollution AUTO_INCREMENT=1 ",
-						function (err, result) {
-						if (err) {
-							console.log('db err: ' + err);
-							throw err;
-						}
-						//console.log('ResetAIsuccess ');
-					});
-
+					
 				// Insert data to table
 				var n_locate = '측정소 위치: ' + result.stationName; // 측정소 위치
 				var n_date = '측정시간: ' + result.dataTime; // 측정 시간
