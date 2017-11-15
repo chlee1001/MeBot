@@ -39,7 +39,7 @@ module.exports = function (app, fs) {
 				"message": {
 					"text": "나는 미봇.. 도움말은 준비중",
 					"photo": {
-						"url": 'http://kakao.mebot.kro.kr/MeBot/img/tmp.jpg',
+						"url": 'http://kakao.mebot.kro.kr/MeBot/public/images/tmp.jpg',
 						"width": 640,
 						"height": 640
 					}
@@ -58,6 +58,7 @@ module.exports = function (app, fs) {
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
+			
 		} else if (_obj.content == '문의하기') {
 			var qna = require('./qna')();
 
@@ -151,7 +152,7 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 
-		} else if (_obj.content == "날씨") {
+		} else if (_obj.content == '날씨' || _obj.content == '미세먼지') {
 			var result = '';
 			var ww = require('./functions/weather/weather');
 			ww.weather(function (result) {
@@ -184,6 +185,7 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
+			
 		} else if (_obj.content == '번역기') {
 			let message = {
 				"message": {
@@ -194,7 +196,7 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 
-		} else if (_obj.content.indexOf('!') > -1) {
+		} else if (_obj.content.indexOf('!') > -1) { // 번역기 기능
 			var result;
 			var content = _obj.content.replace('!', '');
 			var translate = require('./functions/translate');
@@ -205,6 +207,7 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
+			
 		} else {
 			let message = {
 				"message": {
