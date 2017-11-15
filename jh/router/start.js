@@ -19,10 +19,10 @@ module.exports = function (app, fs) {
 		console.log(_obj.content)
 
 		if (_obj.content == 'a') {
-			var date = require ('./date/special')();			// ì¹´í†¡?¼ë¡œ ?„ì†¡
+                               var fun1= require('./date/special')();           
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(date));  //special date ¿¬°á 
+			}).send(JSON.stringify(fun1));  //special date ¿¬°á 
 
 		} else if (_obj.content == 'b') {
 			
@@ -36,21 +36,15 @@ module.exports = function (app, fs) {
 		else {
 			let message = {
 				"message": {
-					"text": "picture",
-					"photo": {
-						"url": "www.naver.com",
-						"width": 640,
-						"height": 640
-					}
+					"text": '¾È³ç ³ª´Â ¹Ìº¿ÀÌ¾ß'
 				},
-
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
 						"a",
 						"b",
 						"c"
-					]
+                                                                               	]
 				}
 			};
 

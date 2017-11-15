@@ -1,14 +1,14 @@
 module.exports = function () {
+      
 	let message = {
 		"message": {
-			date.getDate();
+			"text": 'success1'
 		},
 		"keyboard": {
 			"type": "buttons",
 			"buttons": [
 				"a",
-				"b",
-"c"
+				"b","c"
 			]
 		}
 	};
