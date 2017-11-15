@@ -21,7 +21,7 @@ module.exports = function (app, fs) {
 		if (_obj.content == 'a') {
 			let message = {
 				"message": {
-					"text": 'a'
+					"text": 'abc'
 				},
 				"keyboard": {
 					"type": "buttons",
