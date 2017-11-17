@@ -52,10 +52,10 @@ module.exports.creator = function (callback) {
 
 			} else {
 				var menuDetail1 = objBody.store.menus[1].description;
-				var menuName2 = objBody.store.menus[3].name;
-				var menuDetail2 = objBody.store.menus[3].description;
+				var menuName2 = objBody.store.menus[1].name;
+				var menuDetail2 = objBody.store.menus[1].description;
 
-				result = name + '\n' + menuDescription + '\n' + menuName1 + '\n' + menuDetail1 + '\n\n' + menuName2 + '\n' + menuDetail2;
+				result = name + '\n<' + menuName1 + '>\n' + menuDescription +  menuDetail1 + '\n\n<' + menuName2 + '>\n' + menuDetail2;
 				console.log(result);
 
 				let message = {

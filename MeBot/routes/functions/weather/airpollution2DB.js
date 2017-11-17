@@ -119,8 +119,9 @@ function updateDB(connection) {
 
 			});
 
-		} else {
-			console.log('error = ' + response.statusCode);
+		} else{
+			console.log('airpollution error');
+			//console.log('error = ' + response.statusCode);
 
 		}
 	});

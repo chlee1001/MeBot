@@ -51,12 +51,18 @@ module.exports.beautiful = function (callback) {
 				return callback(message);
 
 			} else {
-				var menuDetail1 = objBody.store.menus[1].description;
-				var menuName2 = objBody.store.menus[3].name;
-				var menuDetail2 = objBody.store.menus[3].description;
+				console.log(objBody.store);
+				
+				var menuName1= objBody.store.menus[0].name;
+				var menuDetail1 = objBody.store.menus[0].description;
+		
+				
+				var menuName2 = objBody.store.menus[1].name;
+				var menuDetail2 = objBody.store.menus[1].description;
 
-				result = name + '\n' + menuDescription + '\n' + menuName1 + '\n' + menuDetail1 + '\n\n' + menuName2 + '\n' + menuDetail2;
-				console.log(result);
+
+				result = name + '\n' + menuName1 + '\n' + menuDetail1 + '\n\n' + menuName2 + '\n' + menuDetail2;
+				console.log(result); 
 
 				let message = {
 					"message": {
