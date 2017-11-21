@@ -26,8 +26,14 @@ module.exports.creator = function (callback) {
 			var objBody = JSON.parse(response.body);
 			//필요한 부분만 추출
 			var name = objBody.store.name;
-			var menuDescription = objBody.store.menus[0].description;
-			var menuName1 = objBody.store.menus[0].name;
+			var menuName1 = objBody.store.menus[0].name; // 교직원
+			var menuDetail1 = objBody.store.menus[0].description;
+
+			var menuName2 = objBody.store.menus[1].name; // 일품
+			var menuDetail2 = objBody.store.menus[1].description;
+
+			var menuName3 = objBody.store.menus[2].name; // 특식
+			var menuDetail3 = objBody.store.menus[2].description;
 
 			if (menuName1 == '식당에서 메뉴를 업로드하지 않았습니다.') {
 				result = name + '\n' + menuName1;
@@ -51,11 +57,7 @@ module.exports.creator = function (callback) {
 				return callback(message);
 
 			} else {
-				var menuDetail1 = objBody.store.menus[1].description;
-				var menuName2 = objBody.store.menus[1].name;
-				var menuDetail2 = objBody.store.menus[1].description;
-
-				result = name + '\n<' + menuName1 + '>\n' + menuDescription +  menuDetail1 + '\n\n<' + menuName2 + '>\n' + menuDetail2;
+				result = name + '\n<' + menuName1 + '>\n' + menuDetail1 + '\n\n<' + menuName2 + '>\n' + menuDetail2 + '\n\n<' + menuName3 + '>\n' + menuDetail3;
 				console.log(result);
 
 				let message = {

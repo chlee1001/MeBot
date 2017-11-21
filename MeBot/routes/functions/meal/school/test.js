@@ -1,8 +1,6 @@
 /**
- * Created by chlee1001 on 2017-11-04.
+ * Created by chlee1001 on 2017-10-31.
  */
-module.exports.beautiful = function (callback) {
-
 	var request = require("request");
 	require('date-utils');
 
@@ -11,7 +9,7 @@ module.exports.beautiful = function (callback) {
 	var today = dDate.toFormat('YYYY-MM-DD');
 	console.log(today);
 	var options = {
-		url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMTE1NzYx?date=' + today,
+		url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMTc3NDg5?date=' + today,
 		method: 'GET',
 		headers: {
 			'accesstoken': token,
@@ -26,12 +24,8 @@ module.exports.beautiful = function (callback) {
 			var objBody = JSON.parse(response.body);
 			//필요한 부분만 추출
 			var name = objBody.store.name;
-				var menuName1= objBody.store.menus[0].name; // 교직원 1
-				var menuDetail1 = objBody.store.menus[0].description;
-				var menuName2 = objBody.store.menus[1].name; // 교직원 2
-				var menuDetail2 = objBody.store.menus[1].description;
-				var menuName3 = objBody.store.menus[2].name; // 특식
-				var menuDetail3 = objBody.store.menus[2].description;
+			var menuDescription = objBody.store.menus[0].description;
+			var menuName1 = objBody.store.menus[0].name;
 
 			if (menuName1 == '식당에서 메뉴를 업로드하지 않았습니다.') {
 				result = name + '\n' + menuName1;
@@ -45,17 +39,25 @@ module.exports.beautiful = function (callback) {
 					"keyboard": {
 						"type": "buttons",
 						"buttons": [
-							"비전타워",
 							"창조관",
+							"아름관",
 							"돌아가기"
 						]
 					}
 				};
 				//카톡에 메시지 전송
-				return callback(message);
+			//	return callback(message);
 
 			} else {
-				result = name + '\n<' + menuName1 + '>\n' + menuDetail1 + '\n\n<' + menuName2 + '>\n' + menuDetail2 + '\n\n<' + menuName3 + '>\n' + menuDetail3;
+			//	console.log(objBody.store.menus);
+							var name = objBody.store.name;
+			var menuDescription = objBody.store.menus[0].description; // 운영시간
+			var menuName1 = objBody.store.menus[0].name; // 일품
+				var menuDetail1 = objBody.store.menus[1].description;
+				var menuName2 = objBody.store.menus[3].name;
+				var menuDetail2 = objBody.store.menus[3].description;
+
+				result = name + '\n' + menuDescription + '\n\n<' + menuName1 + '>\n' + menuDetail1 + '\n\n<' + menuName2 + '>\n' + menuDetail2;
 				console.log(result);
 
 				let message = {
@@ -65,13 +67,13 @@ module.exports.beautiful = function (callback) {
 					"keyboard": {
 						"type": "buttons",
 						"buttons": [
-							"비전타워",
 							"창조관",
+							"아름관",
 							"돌아가기"
 						]
 					}
 				};
-				return callback(message);
+			//	return callback(message);
 
 			}
 		} else {
@@ -83,7 +85,6 @@ module.exports.beautiful = function (callback) {
 				},
 			};
 			//카톡에 메시지 전송 에러 메시지
-			return callback(message);
+		///	return callback(message);
 		}
 	});
-}

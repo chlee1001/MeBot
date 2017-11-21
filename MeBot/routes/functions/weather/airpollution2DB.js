@@ -64,7 +64,7 @@ function updateDB(connection) {
 
 				//var objBody = JSON.parse(strBody);
 				result = (result.response.body[0].items[0].item[12]);
-
+				
 				// table 초기화
 				var deleteQuery = connection.query(
 						"DELETE FROM airpollution WHERE id = 1",
