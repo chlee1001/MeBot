@@ -1,7 +1,7 @@
 
 module.exports = function (app, fs) {
 	// ?¤ë³´??
-
+            var now= new Date();
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
 			console.log(data);
@@ -33,11 +33,10 @@ module.exports = function (app, fs) {
 
 
 		}
-		else {
+		else{
 			let message = {
 				"message": {
-					"text": '¾È³ç ³ª´Â ¹Ìº¿ÀÌ¾ß'
-				},
+					"text": "not"		},
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [

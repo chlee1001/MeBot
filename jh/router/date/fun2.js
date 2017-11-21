@@ -1,7 +1,8 @@
 module.exports = function () {
+             var now=new Date();
 	let message = {
 		"message": {
-			"text": 'success2'
+			"text":"now "+now.getHours()+" : "+now.getMinutes()+ " " +now.getSeconds()+' s'
 		},
 		"keyboard": {
 			"type": "buttons",
