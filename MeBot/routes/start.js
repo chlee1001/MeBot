@@ -58,7 +58,7 @@ module.exports = function (app, fs) {
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
-			
+
 		} else if (_obj.content == '문의하기') {
 			var qna = require('./qna')();
 
@@ -185,7 +185,7 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
-			
+
 		} else if (_obj.content == '번역기') {
 			let message = {
 				"message": {
@@ -207,17 +207,32 @@ module.exports = function (app, fs) {
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
+
+		} else if (_obj.content.indexOf('http') == 0) { // 사진
+			var result;
+
+			var vision = require('./functions/cloudVision/vision');
 			
+			vision.ocr(_obj.content, function (result) {
+				console.log('startlog:'+result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
+
 		} else {
-			let message = {
-				"message": {
-					"text": '내가 아직 모르는 말이야!!\n사용법을 잘 모르겠으면 메뉴얼이라고 입력해봐!(제발)\n'
-				}
-			};
-			// 카톡으로 전송
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+			var result;
+			var content = _obj.content;
+			var simsimi = require('./functions/simsimi/test');
+			simsimi.test(content, function (result) {
+				console.log(result);
+
+				// 카톡으로 전송
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 		}
 	});
 
