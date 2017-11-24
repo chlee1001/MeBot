@@ -1,0 +1,14 @@
+## My setting
+.htaccess
+node_modules/
+pma
+visionKey.json
+getAccessToken.js
+
+index.php
+phpinfo.php
+
+# Logs
+logs
+*.log
+npm-debug.log*
