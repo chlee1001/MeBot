@@ -1,17 +1,21 @@
 /**
  * Created by chlee1001 on 2017.11.24.
  */
-module.exports.ocr = function (content, callback) {
-	var vision = require('google-vision-api-client');
-	var requtil = vision.requtil;
-	var request = require('request');
-	var fs = require('fs');
-	var Log = require('/usr/lib/node_modules/log');
-	var sizeOf = require('image-size');
 
-	var tmpfile = './mytmpfile.png';
-	var jsonfile = 'visionKey.json';
-	vision.init(jsonfile);
+var vision = require('google-vision-api-client');
+var requtil = vision.requtil;
+var request = require('request');
+var fs = require('fs');
+var Log = require('/usr/lib/node_modules/log');
+var sizeOf = require('image-size');
+
+var tmpfile = './mytmpfile.png';
+var jsonfile = 'visionKey.json';
+vision.init(jsonfile);
+
+var result;
+
+module.exports.ocr = function (content, callback) {
 
 	var imgurl = content;
 	console.log('module:' + imgurl);
@@ -21,18 +25,10 @@ module.exports.ocr = function (content, callback) {
 		var req = request.get(url);
 		var result;
 		req.pipe(fs.createWriteStream(tmpfile));
+		console.log('ddd' + url);
 		req.on('end', function () {
 			result = main(tmpfile);
 		});
-		
-		let message = {
-			"message": {
-				"text": result
-
-			},
-		};
-		
-		return callback(result);
 	} else {
 		main(imgurl);
 	}
@@ -54,12 +50,8 @@ function main(imgfile) {
 		//log = new Log(JSON.stringify(d), fs.createWriteStream('my.log'));
 		//log.debug(JSON.stringify(d.responses[0].fullTextAnnotation.text));
 
-		var result = d.responses[0].fullTextAnnotation.text;
+		result = d.responses[0].fullTextAnnotation.text;
 		console.log('visionlog:' + result);
-
-		
-		
-		return callback(result);
 
 		/*
 		if (!d.responses[0].faceAnnotations)

@@ -210,12 +210,10 @@ module.exports = function (app, fs) {
 
 		} else if (_obj.content.indexOf('http') == 0) { // 사진
 			var result;
-
+			var content = _obj.content;
 			var vision = require('./functions/cloudVision/vision');
-			
-			vision.ocr(_obj.content, function (result) {
-				console.log('startlog:'+result);
-
+			vision.ocr(content, function (result) {
+				console.log(result);
 				res.set({
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));

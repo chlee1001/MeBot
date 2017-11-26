@@ -31,7 +31,7 @@ module.exports.creator = function (callback) {
 			var menu = new Array();
 
 			for (var i = 0; i < objLength; i++) {
-				menu[i] = '\n<' + objBody.store.menus[i].name + '>\n' + objBody.store.menus[i].description + '\n';
+				menu[i] = '\n\n<' + objBody.store.menus[i].name + '>\n' + objBody.store.menus[i].description + '\n';
 			}
 
 			var result = name;
