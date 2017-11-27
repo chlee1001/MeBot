@@ -8,9 +8,9 @@ require('date-utils');
 const token = '9SuhlhFnlYnT9IVRKIHsLGaC42DbXhA6pAfsyNpvhhJ9OS8l2v';
 var dDate = new Date();
 var today = dDate.toFormat('YYYY-MM-DD');
-console.log(today);
+//console.log(today);
 var options = {
-	url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMDU0MDQx?date=' + today,
+	url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMTc3NDg5?date=' + today,
 	method: 'GET',
 	headers: {
 		'accesstoken': token,
@@ -24,22 +24,29 @@ request.get(options, function (error, response, body) {
 		//json 파싱
 		var objBody = JSON.parse(response.body);
 		var objLength = objBody.store.menus.length;
-			
+		var days = dDate.toFormat('MM-DD');
+		
 		//필요한 부분만 추출
 		var name = objBody.store.name;
+		var menus = objBody.store.menus;
 		var menu = new Array();
-
-		for (var i = 0; i < objLength; i++) {
-			menu[i] = '\n<' + objBody.store.menus[i].name + '>\n' + objBody.store.menus[i].description +'\n';
-		}
+		var menuCnt = 0;
 		
-		var result = name;
 		for (var i = 0; i < objLength; i++) {
-			result +=menu[i];
+			if (menus[i].date.indexOf(days) > -1) {
+				menu[i] = '\n<' + menus[i].name + '>\n' + menus[i].description + '\n';
+				menuCnt++;
+			}
+		}
+
+		// 출력
+		var result = name;
+		for (var i = 0; i < menuCnt; i++) {
+			result += menu[i];
 		}
 
 		console.log(result);
-		
+
 	} else {
 		console.log('error = ' + response.statusCode);
 	}

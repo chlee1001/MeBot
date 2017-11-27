@@ -3,13 +3,17 @@
  */
 module.exports.creator = function (callback) {
 
+	/**
+	 * Created by chlee1001 on 2017-11-04.
+	 */
+
 	var request = require("request");
 	require('date-utils');
 
 	const token = '9SuhlhFnlYnT9IVRKIHsLGaC42DbXhA6pAfsyNpvhhJ9OS8l2v';
 	var dDate = new Date();
 	var today = dDate.toFormat('YYYY-MM-DD');
-	console.log(today);
+	//console.log(today);
 	var options = {
 		url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMDU0MDQx?date=' + today,
 		method: 'GET',
@@ -25,17 +29,24 @@ module.exports.creator = function (callback) {
 			//json 파싱
 			var objBody = JSON.parse(response.body);
 			var objLength = objBody.store.menus.length;
+			var days = dDate.toFormat('MM-DD');
 
 			//필요한 부분만 추출
 			var name = objBody.store.name;
+			var menus = objBody.store.menus;
 			var menu = new Array();
+			var menuCnt = 0;
 
 			for (var i = 0; i < objLength; i++) {
-				menu[i] = '\n\n<' + objBody.store.menus[i].name + '>\n' + objBody.store.menus[i].description + '\n';
+				if (menus[i].date.indexOf(days) > -1) {
+					menu[i] = '\n<' + menus[i].name + '>\n' + menus[i].description + '\n';
+					menuCnt++;
+				}
 			}
 
+			// 출력
 			var result = name;
-			for (var i = 0; i < objLength; i++) {
+			for (var i = 0; i < menuCnt; i++) {
 				result += menu[i];
 			}
 
