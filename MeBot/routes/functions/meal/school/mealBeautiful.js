@@ -9,7 +9,7 @@ module.exports.beautiful = function (callback) {
 	const token = '9SuhlhFnlYnT9IVRKIHsLGaC42DbXhA6pAfsyNpvhhJ9OS8l2v';
 	var dDate = new Date();
 	var today = dDate.toFormat('YYYY-MM-DD');
-	console.log(today);
+	//console.log(today);
 	var options = {
 		url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMTE1NzYx?date=' + today,
 		method: 'GET',
@@ -25,29 +25,29 @@ module.exports.beautiful = function (callback) {
 			//json 파싱
 			var objBody = JSON.parse(response.body);
 			var objLength = objBody.store.menus.length;
-
-			/* objBody.store.menus[0].name : 교직원 1
-			objBody.store.menus[0].description : 교직원 1 메뉴
-			objBody.store.menus[1].name : 교직원 2
-			objBody.store.menus[1].description : 교직원 2 메뉴
-			objBody.store.menus[2].name : 특식특식
-			objBody.store.menus[2].description : 특식 메뉴 */
+			var days = dDate.toFormat('MM-DD');
 
 			//필요한 부분만 추출
-			var name = objBody.store.name; // 식당 이름
+			var name = objBody.store.name;
+			var menus = objBody.store.menus;
 			var menu = new Array();
+			var menuCnt = 0;
 
 			for (var i = 0; i < objLength; i++) {
-				menu[i] = '\n\n<' + objBody.store.menus[i].name + '>\n' + objBody.store.menus[i].description;
+				if (menus[i].date.indexOf(days) > -1) {
+					menu[i] = '\n<' + menus[i].name + '>\n' + menus[i].description + '\n';
+					menuCnt++;
+				}
 			}
 
+			// 출력
 			var result = name;
-			for (var i = 0; i < objLength; i++) {
+			for (var i = 0; i < menuCnt; i++) {
 				result += menu[i];
 			}
 
 			console.log(result);
-
+			
 			let message = {
 				"message": {
 					"text": result
@@ -56,7 +56,7 @@ module.exports.beautiful = function (callback) {
 					"type": "buttons",
 					"buttons": [
 						"비전타워",
-						"창조관",
+						"아름관",
 						"돌아가기"
 					]
 				}
@@ -65,7 +65,7 @@ module.exports.beautiful = function (callback) {
 
 		} else {
 			console.log('error = ' + response.statusCode);
-
+			
 			let message = {
 				"message": {
 					"text": response.statusCode

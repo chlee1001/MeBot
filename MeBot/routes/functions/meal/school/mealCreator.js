@@ -3,10 +3,6 @@
  */
 module.exports.creator = function (callback) {
 
-	/**
-	 * Created by chlee1001 on 2017-11-04.
-	 */
-
 	var request = require("request");
 	require('date-utils');
 
