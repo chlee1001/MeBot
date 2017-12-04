@@ -12,7 +12,8 @@ var fs = require("fs");
 var http = require('http');
 var schedule = require('node-schedule');
 var restaurantListDB = require('./routes/functions/meal/restaurantList2DB.js');
-var airpollution2DB = require('./routes/functions/weather/airpollution2DB.js');
+//var airpollution2DB = require('./routes/functions/weather/airpollution2DB.js');
+var airpollution2DB = require('./routes/functions/weather/airpollution2DB2.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,7 +51,6 @@ var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB 
 var airpollutionDB = schedule.scheduleJob('10 * * * *', function() {
 		airpollution2DB();
 	});
-
 
 
 // Connect IO

@@ -64,7 +64,7 @@ function updateDB(connection) {
 
 				//var objBody = JSON.parse(strBody);
 				result = (result.response.body[0].items[0].item[12]);
-				
+
 				// table 초기화
 				var deleteQuery = connection.query(
 						"DELETE FROM airpollution WHERE id = 1",
@@ -75,7 +75,7 @@ function updateDB(connection) {
 						}
 						//console.log('Del_success ');
 					});
-					
+
 				// Insert data to table
 				var n_locate = '측정소 위치: ' + result.stationName; // 측정소 위치
 				var n_date = '측정시간: ' + result.dataTime; // 측정 시간
@@ -99,8 +99,13 @@ function updateDB(connection) {
 					n_pm10Grade = 'error';
 				}
 
+				if (result.pm10Value[0] == '-') {
+					n_pm10 = '미세먼지 농도: ' + '공공데이터 포털에서 제공하는 API에 오류가 있습니다.'
+
+				}
+
 				var airpollution = {
-					id: '1',
+					id: ' 1 ',
 					locate: n_locate,
 					date: n_date,
 					pm10: n_pm10,
@@ -111,17 +116,17 @@ function updateDB(connection) {
 						"Insert into airpollution set ?", airpollution,
 						function (err, result) {
 						if (err) {
-							console.log('db err: ' + err);
+							console.log(' db err: ' + err);
 							throw err;
 						}
-						console.log('success ' + today);
+						console.log(' success ' + today);
 					});
 
 			});
 
-		} else{
-			console.log('airpollution error');
-			//console.log('error = ' + response.statusCode);
+		} else {
+			console.log(' airpollution error ');
+			//console.log(' error = ' + response.statusCode);
 
 		}
 	});
