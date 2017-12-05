@@ -10,7 +10,7 @@ var dDate = new Date();
 var today = dDate.toFormat('YYYY-MM-DD');
 //console.log(today);
 var options = {
-	url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMTE1NzYx?date=' + today,
+	url: 'https://bds.bablabs.com:443/openapi/v1/campuses/iaSfflZqCl/stores/MjEzMTc3NDg5?date=' + today,
 	method: 'GET',
 	headers: {
 		'accesstoken': token,

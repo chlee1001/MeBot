@@ -70,6 +70,14 @@ module.exports.creator = function (callback) {
 				"message": {
 					"text": response.statusCode
 				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"비전타워",
+						"아름관",
+						"돌아가기"
+					]
+				}
 			};
 			//카톡에 메시지 전송 에러 메시지
 			return callback(message);

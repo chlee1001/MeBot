@@ -47,7 +47,7 @@ module.exports.beautiful = function (callback) {
 			}
 
 			console.log(result);
-			
+
 			let message = {
 				"message": {
 					"text": result
@@ -56,7 +56,7 @@ module.exports.beautiful = function (callback) {
 					"type": "buttons",
 					"buttons": [
 						"비전타워",
-						"아름관",
+						"창조관",
 						"돌아가기"
 					]
 				}
@@ -65,11 +65,19 @@ module.exports.beautiful = function (callback) {
 
 		} else {
 			console.log('error = ' + response.statusCode);
-			
+
 			let message = {
 				"message": {
 					"text": response.statusCode
 				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"비전타워",
+						"창조관",
+						"돌아가기"
+					]
+				}
 			};
 			//카톡에 메시지 전송 에러 메시지
 			return callback(message);
