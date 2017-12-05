@@ -46,7 +46,7 @@ module.exports.beautiful = function (callback) {
 				result += menu[i];
 			}
 
-			console.log(result);
+			//console.log(result);
 
 			let message = {
 				"message": {

@@ -46,7 +46,7 @@ module.exports.creator = function (callback) {
 				result += menu[i];
 			}
 
-			console.log(result);
+			//console.log(result);
 
 			let message = {
 				"message": {

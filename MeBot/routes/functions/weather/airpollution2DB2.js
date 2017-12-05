@@ -68,7 +68,8 @@ function updateDB(connection) {
 
 				//var objBody = JSON.parse(strBody);
 				result = (result.response.body[0].items[0].item[11]);
-				console.log(result);
+				//console.log(result);
+				
 				// table 초기화
 				var deleteQuery = connection.query(
 						"DELETE FROM airpollution WHERE id = 1",
@@ -113,7 +114,7 @@ function updateDB(connection) {
 							console.log(' db err: ' + err);
 							throw err;
 						}
-						console.log(' success ' + today);
+						console.log('success ' + today);
 					});
 
 			});

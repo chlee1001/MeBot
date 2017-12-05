@@ -1,6 +1,7 @@
 /**
  * Created by chlee1001 on 2017.11.09.
  */
+var IfParinsError = require('./airpollution2DB2.js');
 
 module.exports = function (app, mysql, connection) {
 	// DataBase
@@ -100,27 +101,27 @@ function updateDB(connection) {
 				}
 
 				if (result.pm10Value[0] == '-') {
-					n_pm10 = '미세먼지 농도: ' + '공공데이터 포털에서 제공하는 API에 오류가 있습니다.'
+					IfParinsError();
+				} else {
 
+					var airpollution = {
+						id: ' 1 ',
+						locate: n_locate,
+						date: n_date,
+						pm10: n_pm10,
+						pm10Grade: n_pm10Grade
+					};
+
+					var query = connection.query(
+							"Insert into airpollution set ?", airpollution,
+							function (err, result) {
+							if (err) {
+								console.log(' db err: ' + err);
+								throw err;
+							}
+							console.log('success ' + today);
+						});
 				}
-
-				var airpollution = {
-					id: ' 1 ',
-					locate: n_locate,
-					date: n_date,
-					pm10: n_pm10,
-					pm10Grade: n_pm10Grade
-				};
-
-				var query = connection.query(
-						"Insert into airpollution set ?", airpollution,
-						function (err, result) {
-						if (err) {
-							console.log(' db err: ' + err);
-							throw err;
-						}
-						console.log(' success ' + today);
-					});
 
 			});
 
