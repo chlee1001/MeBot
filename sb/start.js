@@ -40,36 +40,6 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 
-		} else if (_obj.content == '사용방법') {
-			let message = {
-				"message": {
-					"text": "나는 미봇.. 도움말은 준비중",
-					"photo": {
-						"url": 'http://kakao.mebot.kro.kr/MeBot/img/tmp.jpg',
-						"width": 640,
-						"height": 640
-					}
-				},
-
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"시작하기",
-						"사용방법",
-						"문의하기"
-					]
-				}
-			};
-			// 카톡으로 전송
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
-		} else if (_obj.content == '돌아가기' || _obj.content == '/취소') {
-
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(menu()));
-
 		} else if (_obj.content == '처음으로') {
 
 			res.set({
@@ -80,7 +50,30 @@ module.exports = function (app, fs) {
 			
 			let message = {
 				"message": {
-					"text": '방법을 모르신다면 >사진분석 예시< 버튼을 눌러주세요!'
+					"text": '방법을 모르신다면 <<사진분석 예시>> 버튼을 눌러주세요!'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"사진분석",
+						"사진분석 예시",
+						"처음으로"
+					]
+				}
+			};
+			
+			var result;
+			var picture = require('./picture');
+			
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+			
+		} else if (_obj.content == '사진분석 예시') {
+			
+			let message = {
+				"message": {
+					"text": '사진분석에서는 원하는 사진을 전송하면 text로 추출받을 수 있습니다.'
 				},
 				"keyboard": {
 					"type": "buttons",
@@ -96,20 +89,7 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 			
-		} else if (_obj.content.indexOf('!') > -1) {
-			var result;
-			var content = _obj.content.replace('!', '');
-			var translate = require('./functions/translate');
-			translate.papago(content, function (result) {
-				console.log(result);
-
-				res.set({
-					'content-type': 'application/json'
-				}).send(JSON.stringify(result));
-			})
-
-		}
-
+		} 
 	});
 
 	app.post('/friend', (req, res) => {
