@@ -11,7 +11,7 @@ var flag = 0;
 
 module.exports.studentID = function (content, callback) {
 	QRGenerator(content);
-	
+
 	if (flag == 1) {
 		let message = {
 			"message": {
@@ -23,11 +23,23 @@ module.exports.studentID = function (content, callback) {
 				}
 
 			},
+			"keyboard": {
+				"type": 'buttons',
+				"buttons": [
+					'학식',
+					"식당추천",
+					"날씨 정보",
+					'학번 찾기',
+					"번역기",
+					"사진",
+					"처음으로"
+				]
+			}
 		};
 		//카톡에 메시지 전송
 		return callback(message);
 	} else {
-		
+
 		let message = {
 			"message": {
 				"text": 'QR code 생성에 에러 발생. 다시 입력해주시기 바랍니다.'

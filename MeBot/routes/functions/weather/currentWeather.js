@@ -17,10 +17,10 @@ module.exports.weather = function (callback) {
 			'appkey': token
 		}
 	};
-	
+
 	var result2 = '';
 	var air = require('./airpollution');
-	
+
 	air.airpollution(function (result2) {
 		//console.log(result2);
 
@@ -36,6 +36,16 @@ module.exports.weather = function (callback) {
 				var temperature = objBody.weather.hourly[0].temperature;
 				var humidity = objBody.weather.hourly[0].humidity;
 
+				if (sky == '비 또는 눈') {
+					sky += ' (비) (눈)';
+				} else if (sky == '눈') {
+					sky += ' (눈)';
+				} else if (sky == '흐림') {
+					sky += ' (구름)';
+				} else if (sky == '구름많음') {
+					sky += ' (구름)(구름)';
+				}
+
 				result = '현재 ' + today + '의 날씨 정보(해)(구름)(비)\n\n' + sky
 					 + '\n현재 기온: ' + temperature.tc + '℃\n최고 기온: ' + temperature.tmax
 					 + '℃\n최저 기온: ' + temperature.tmin + '℃\n습도: ' + humidity + '%\n\n미세먼지\n' + result2;
@@ -48,12 +58,9 @@ module.exports.weather = function (callback) {
 					"keyboard": {
 						"type": "buttons",
 						"buttons": [
-							"학식",
-							"식당추천",
-							"날씨",
-							"번역기",
-							"사진",
-							"처음으로"
+							"오늘 날씨",
+							"내일 날씨",
+							"돌아가기"
 						]
 					}
 				};

@@ -11,59 +11,60 @@ var sizeOf = require('image-size');
 
 var tmpfile = './mytmpfile.png';
 var jsonfile = 'visionKey.json';
-vision.init(jsonfile);
 
 var result;
 
 module.exports.ocr = function (content, callback) {
 
+	vision.init(jsonfile);
+
 	var imgurl = content;
 	console.log('module:' + imgurl);
-	
+
 	if (imgurl.indexOf('http') > -1) {
 		var url = imgurl;
 		var req = request.get(url);
 		var result;
 		req.pipe(fs.createWriteStream(tmpfile));
-		console.log('ddd' + url);
+
 		req.on('end', function () {
 			result = main(tmpfile);
 		});
 	} else {
 		main(imgurl);
 	}
-}
-function main(imgfile) {
-	var d = requtil.createRequests().addRequest(
-			requtil.createRequest(imgfile)
-			.withFeature('TEXT_DETECTION', 50)
-			//.withFeature('LABEL_DETECTION', 20)
-			.build());
+	//}
+	function main(imgfile) {
+		var d = requtil.createRequests().addRequest(
+				requtil.createRequest(imgfile)
+				.withFeature('TEXT_DETECTION', 50)
+				//.withFeature('LABEL_DETECTION', 20)
+				.build());
 
-	var imgSize = sizeOf(imgfile);
-	console.log(imgSize.width, imgSize.height);
+		var imgSize = sizeOf(imgfile);
+		console.log(imgSize.width, imgSize.height);
 
-	vision.query(d, function (e, r, d) {
-		if (e)
-			return console.log('ERROR:', e);
+		vision.query(d, function (e, r, d) {
+			if (e)
+				return console.log('ERROR:', e);
 
-		//log = new Log(JSON.stringify(d), fs.createWriteStream('my.log'));
-		//log.debug(JSON.stringify(d.responses[0].fullTextAnnotation.text));
+			//log = new Log(JSON.stringify(d), fs.createWriteStream('my.log'));
+			//log.debug(JSON.stringify(d.responses[0].fullTextAnnotation.text));
 
-		result = d.responses[0].fullTextAnnotation.text;
-		console.log('visionlog:' + result);
+			result = d.responses[0].fullTextAnnotation.text;
+			console.log('visionlog:' + result);
 
-		/*
-		if (!d.responses[0].faceAnnotations)
-		return;
+			/*
+			if (!d.responses[0].faceAnnotations)
+			return;
 
 
-		//var v = d.responses[0].faceAnnotations[0].boundingPoly.vertices;
-		var v = [];
-		d.responses[0].faceAnnotations.forEach(function (o) {
-		v.push(o.boundingPoly.vertices);
-		})
-		console.log('-->', v);
-		 */
-	});
-}
+			//var v = d.responses[0].faceAnnotations[0].boundingPoly.vertices;
+			var v = [];
+			d.responses[0].faceAnnotations.forEach(function (o) {
+			v.push(o.boundingPoly.vertices);
+			})
+			console.log('-->', v);
+			 */
+		});
+	}

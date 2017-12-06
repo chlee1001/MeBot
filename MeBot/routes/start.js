@@ -26,10 +26,22 @@ module.exports = function (app, fs) {
 		if (_obj.content == '시작하기') { // 시작하기
 			let message = {
 				"message": {
-					"text": '안녕 나는 미봇이야!!(씨익)(신나)\n내가 처음이면 메뉴얼이라고 입력해봐!!(제발)\n'
+					"text": '안녕 나는 미봇이야!!(씨익)(신나)\n내가 처음이면 처음화면으로 돌아가서 사용방법을 눌러봐!!(제발)\n'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						'학식',
+						"식당추천",
+						"날씨 정보",
+						'학번 찾기',
+						"번역기",
+						"사진",
+						"처음으로"
+					]
 				}
 			};
-			// 카톡으로 전송
+
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
@@ -136,7 +148,7 @@ module.exports = function (app, fs) {
 					"text": "가천대 주변의 100개의 식당 리스트",
 					"message_button": {
 						"label": '여기야',
-						"url": 'http://kakao.mebot.kro.kr:3000/list'
+						"url": 'http://kakao.mebot.kro.kr:9000/list'
 					}
 				},
 				"keyboard": {
@@ -152,10 +164,62 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 
-		} else if (_obj.content == '날씨' || _obj.content == '미세먼지') {
+		} else if (_obj.content == '사진') {
+			let message = {
+				"message": {
+					"text": '사진을 보내줘'
+				}
+			};
+			// 카톡으로 전송
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content == '날씨 정보') {
+			let message = {
+				"message": {
+					"text": "원하는 날씨 정보를 눌러줘"
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						'현재 날씨',
+						'오늘 날씨',
+						'내일 날씨',
+						'돌아가기'
+					]
+				}
+			};
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content == '현재 날씨' || _obj.content == '미세먼지') {
 			var result = '';
-			var ww = require('./functions/weather/weather');
+			var ww = require('./functions/weather/currentWeather');
 			ww.weather(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
+
+		} else if (_obj.content == '오늘 날씨') {
+			var result = '';
+			var ww = require('./functions/weather/todayWeather');
+			ww.todayWeather(function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
+
+		} else if (_obj.content == '내일 날씨') {
+			var result = '';
+			var ww = require('./functions/weather/tomorrowWeather');
+			ww.tomorrowWeather(function (result) {
 				console.log(result);
 
 				res.set({
@@ -175,7 +239,17 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(main()));
 
-		} else if (_obj.content.indexOf('학번') > -1) {
+		} else if (_obj.content == '학번 찾기') {
+			let message = {
+				"message": {
+					"text": "학번을 찾고 싶으면 '학번 201700000' 라고 입력해!!"
+				}
+			};
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content.indexOf('학번 20') > -1) {
 			var result;
 			var content = _obj.content.replace('학번 ', '');
 			var qr = require('./functions/QR_studentID');
@@ -211,26 +285,40 @@ module.exports = function (app, fs) {
 		} else if (_obj.content.indexOf('http') == 0) { // 사진
 			var result;
 			var content = _obj.content;
+			console.log('startURL:' + content);
 			var vision = require('./functions/cloudVision/vision');
+
 			vision.ocr(content, function (result) {
 				console.log(result);
+
 				res.set({
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
 
 		} else {
+			let message = {
+				"message": {
+					"text": "준비중이야"
+				}
+			};
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(main()));
+
+			/*
 			var result;
 			var content = _obj.content;
 			var simsimi = require('./functions/simsimi/test');
 			simsimi.test(content, function (result) {
-				console.log(result);
+			console.log(result);
 
-				// 카톡으로 전송
-				res.set({
-					'content-type': 'application/json'
-				}).send(JSON.stringify(result));
+			// 카톡으로 전송
+			res.set({
+			'content-type': 'application/json'
+			}).send(JSON.stringify(result));
 			})
+			 */
 		}
 	});
 

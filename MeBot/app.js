@@ -11,8 +11,10 @@ var bodyParser = require('body-parser');
 var fs = require("fs");
 var http = require('http');
 var schedule = require('node-schedule');
+
 var restaurantListDB = require('./routes/functions/meal/restaurantList2DB.js');
 var airpollution2DB = require('./routes/functions/weather/airpollution2DB.js');
+var weather2DB = require('./routes/functions/weather/weather2DB.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,8 +29,6 @@ app.use(bodyParser.urlencoded({
 	}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 // Server connect
 var server = app.listen(9000, function () { // port 9000 서버 실행
@@ -47,10 +47,13 @@ var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB 
 		restaurantListDB();
 	});
 
-var airpollutionDB = schedule.scheduleJob('10 * * * *', function() {
+var airpollutionDB = schedule.scheduleJob('15 * * * *', function () {
 		airpollution2DB();
 	});
 
+var weatherDB = schedule.scheduleJob('10 * * * *', function () {
+		weather2DB();
+	});
 
 // Connect IO
 var io = require('./io')(server);

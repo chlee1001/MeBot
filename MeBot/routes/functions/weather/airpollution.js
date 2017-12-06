@@ -2,7 +2,7 @@
  * Created by chlee1001 on 2017.11.10.
  */
 
-module.exports.airpollution= function (callback) {
+module.exports.airpollution = function (callback) {
 	// DataBase
 	var mysql = require("mysql");
 	var express = require('express');
@@ -21,14 +21,22 @@ module.exports.airpollution= function (callback) {
 			console.log('Connection as id ' + connection.threadId);
 	});
 
+	var data = '';
 	connection.query('SELECT * from airpollution', function (err, rows, fields) {
 		connection.end();
 		if (!err) {
-			var data = rows[0].locate + '\n' + rows[0].date + '\n' + rows[0].pm10 + '\n' + '미세먼지 등급: ' + rows[0].pm10Grade;
-			console.log(data);
-			//res.send(data);
-			return callback(data); // weather.js로 콜백
-		} else
+			if (!rows.length) {
+				data = 'DB is Empty';
+				console.log(data);
+				return callback(data);
+			} else {
+				data = rows[0].locate + '\n' + rows[0].date + '\n' + rows[0].pm10 + '\n' + '미세먼지 등급: ' + rows[0].pm10Grade;
+				console.log(data);
+				//res.send(data);
+				return callback(data); // weather.js로 콜백
+			}
+		} else {
 			console.log('Error while performing Query.');
+		}
 	});
 }
