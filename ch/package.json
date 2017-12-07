@@ -6,7 +6,7 @@
     "body": "^5.1.0",
     "body-parser": "^1.14.2",
     "cheerio-httpcli": "^0.7.1",
-    "ejs": "~2.4.1",
+    "ejs": "^2.5.5",
     "encodeuri-safe": "~0.0.1",
     "express": "^4.13.4",
     "express-session": "~1.13.0",
