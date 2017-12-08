@@ -30,6 +30,7 @@ module.exports = function (app, fs) {
 					"buttons": [
 						"사진분석",
 						"사진분석 예시",
+						"무당이 시간표",
 						"처음으로"
 					]
 				}
@@ -50,7 +51,7 @@ module.exports = function (app, fs) {
 			
 			let message = {
 				"message": {
-					"text": '방법을 모르신다면 <<사진분석 예시>> 버튼을 눌러주세요!'
+					"text": '방법을 모르신다면 <<사진분석 예시>> 버튼을 눌러주세요!\n\n text로 변환하고 싶은 사진을 보내주세요'
 				},
 				"keyboard": {
 					"type": "buttons",
@@ -62,12 +63,23 @@ module.exports = function (app, fs) {
 				}
 			};
 			
-			var result;
-			var picture = require('./picture');
-			
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
+			
+		} else if (_obj.content.indexOf('http') > -1) {
+			
+			var result;
+			var content = _obj.content;
+			var picture = require('./picture');
+			
+			picture.cloud(content, function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 			
 		} else if (_obj.content == '사진분석 예시') {
 			
@@ -89,14 +101,37 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 			
-		} 
+		} else if (_obj.content == '무당이 시간표') {
+			let message = {
+				"message": {
+					"photo": {
+						"url": 'http://kakao.mebot.kro.kr/sb/무당이.jpg',
+						"width" : 640,
+						"height" : 1200
+					}
+				},
+
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"시작하기",
+						"사용방법",
+						"문의하기"
+					]
+				}
+			};
+			
+		res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+		}
 	});
 
 	app.post('/friend', (req, res) => {
 		const user_key = req.body.user_key;
 		console.log(`${user_key}님이 채팅방에 참가했습니다.`);
 
-		res.set({
+		res.set({ 
 			'content-type': 'application/json'
 		}).send(JSON.stringify({
 				success: true

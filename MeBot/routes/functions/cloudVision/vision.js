@@ -6,65 +6,58 @@ var vision = require('google-vision-api-client');
 var requtil = vision.requtil;
 var request = require('request');
 var fs = require('fs');
-var Log = require('/usr/lib/node_modules/log');
-var sizeOf = require('image-size');
+//var Log = require('/usr/lib/node_modules/log');
+//var sizeOf = require('image-size');
 
-var tmpfile = './mytmpfile.png';
-var jsonfile = 'visionKey.json';
+var jsonfile = './routes/functions/cloudVision/visionKey.json';
+vision.init(jsonfile);
 
 var result;
 
 module.exports.ocr = function (content, callback) {
+	//Initialize the api
 
-	vision.init(jsonfile);
+//Build the request payloads
 
-	var imgurl = content;
-	console.log('module:' + imgurl);
+const download = require('image-downloader')
 
-	if (imgurl.indexOf('http') > -1) {
-		var url = imgurl;
-		var req = request.get(url);
-		var result;
-		req.pipe(fs.createWriteStream(tmpfile));
+// Download to a directory and save with the original filename
+const options = {
+  url: content,
+  dest: './routes/functions/cloudVision/test.jpg'                  // Save to /path/to/dest/image.jpg
+}
 
-		req.on('end', function () {
-			result = main(tmpfile);
-		});
-	} else {
-		main(imgurl);
-	}
-	//}
-	function main(imgfile) {
-		var d = requtil.createRequests().addRequest(
-				requtil.createRequest(imgfile)
-				.withFeature('TEXT_DETECTION', 50)
-				//.withFeature('LABEL_DETECTION', 20)
-				.build());
+download.image(options)
+  .then(({ filename, image }) => { 
+    console.log('File saved to', filename);
+	  
+var d = requtil.createRequests().addRequest(
 
-		var imgSize = sizeOf(imgfile);
-		console.log(imgSize.width, imgSize.height);
+		requtil.createRequest('./routes/functions/cloudVision/test.jpg')
 
-		vision.query(d, function (e, r, d) {
-			if (e)
-				return console.log('ERROR:', e);
+		.withFeature('TEXT_DETECTION', 3)
 
-			//log = new Log(JSON.stringify(d), fs.createWriteStream('my.log'));
-			//log.debug(JSON.stringify(d.responses[0].fullTextAnnotation.text));
+		.build())
 
-			result = d.responses[0].fullTextAnnotation.text;
-			console.log('visionlog:' + result);
+//Do query to the api server
+vision.query(d, function (e, r, d) {
 
-			/*
-			if (!d.responses[0].faceAnnotations)
-			return;
+	if (e)
+		console.log('ERROR:', e);
+	
+	result = d.responses[0].fullTextAnnotation.text;
+	console.log(result);
+	let message = {
+				"message": {
+					"text": result
 
+				},
+			};
+			//카톡에 메시지 전송
+			return callback(message);
+});
+  }).catch((err) => {
+    throw err
+  })
 
-			//var v = d.responses[0].faceAnnotations[0].boundingPoly.vertices;
-			var v = [];
-			d.responses[0].faceAnnotations.forEach(function (o) {
-			v.push(o.boundingPoly.vertices);
-			})
-			console.log('-->', v);
-			 */
-		});
-	}
+}
