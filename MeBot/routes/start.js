@@ -36,7 +36,8 @@ module.exports = function (app, fs) {
 						"날씨 정보",
 						'학번 찾기',
 						"번역기",
-						"사진",
+						"사진분석",
+						'무당이 시간표',
 						"처음으로"
 					]
 				}
@@ -164,13 +165,38 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 
-		} else if (_obj.content == '사진') {
+		} else if (_obj.content == '사진분석') {
 			let message = {
 				"message": {
-					"text": '사진을 보내줘'
+					"text": '방법을 모르신다면 <<사진분석 예시>> 버튼을 눌러주세요!\n\n text로 변환하고 싶은 사진을 보내주세요'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"사진분석 예시",
+						"돌아가기"
+					]
 				}
 			};
-			// 카톡으로 전송
+
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content == '사진분석 예시') {
+			let message = {
+				"message": {
+					"text": '사진분석에서는 원하는 사진을 전송하면 text로 추출받을 수 있습니다.'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"사진분석",
+						"돌아가기"
+					]
+				}
+			};
+
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
@@ -227,6 +253,33 @@ module.exports = function (app, fs) {
 				}).send(JSON.stringify(result));
 			})
 
+		} else if (_obj.content == '무당이 시간표') {
+			let message = {
+				"message": {
+					"photo": {
+						"url": 'http://kakao.mebot.kro.kr/sb/무당이.jpg',
+						"width": 640,
+						"height": 1200
+					}
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						'학식',
+						"식당추천",
+						"날씨 정보",
+						'학번 찾기',
+						"번역기",
+						"사진분석",
+						'무당이 시간표',
+						"처음으로"
+					]
+				}
+			};
+
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
 		} else if (_obj.content == '메뉴얼' || _obj.content == '메뉴' || _obj.content == '돌아가기' || _obj.content == '/취소') {
 
 			res.set({
@@ -263,7 +316,7 @@ module.exports = function (app, fs) {
 		} else if (_obj.content == '번역기') {
 			let message = {
 				"message": {
-					"text": "안녕 나는 미봇번역기야! 사용방법 !말, (돌아갈려면 '/취소')"
+					"text": "안녕 나는 미봇번역기야! \n사용방법 !말, (돌아갈려면 '/취소')"
 				}
 			};
 			res.set({
@@ -282,13 +335,12 @@ module.exports = function (app, fs) {
 				}).send(JSON.stringify(result));
 			})
 
-		} else if (_obj.content.indexOf('http') == 0) { // 사진
+		} else if (_obj.content.indexOf('http') > -1) {
 			var result;
 			var content = _obj.content;
-			console.log('startURL:' + content);
-			var vision = require('./functions/cloudVision/vision');
+			var picture = require('./functions/cloudVision/picture');
 
-			vision.ocr(content, function (result) {
+			picture.cloud(content, function (result) {
 				console.log(result);
 
 				res.set({

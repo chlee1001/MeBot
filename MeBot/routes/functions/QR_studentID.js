@@ -60,11 +60,24 @@ function QRGenerator(content) {
 
 	var QRCode = require('qrcode');
 
+	/*
+	// QRCode object{
+	modules,              // Bitmatrix class with modules data
+	version,              // Calculated QR Code version
+	errorCorrectionLevel, // Error Correction Level
+	maskPattern,          // Calculated Mask pattern
+	segments              // Generated segments
+	}
+	 */
+
 	QRCode.toFile('public/data/studentID.png', info, {
 		color: {
 			dark: '#000000', // Blue dots
 			light: '#ffffff' // Transparent background
-		}
+		},
+		errorCorrectionLevel: 'H',
+		version: 2
+
 	}, function (err) {
 		if (err)
 			throw err;

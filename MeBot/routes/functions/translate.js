@@ -15,8 +15,8 @@ module.exports.papago = function (content, callback) {
 		url: api_url,
 		//한국어(source : ko) > 영어 (target : en ), 카톡에서 받은 메시지(text)
 		form: {
-			'source': 'ko',
-			'target': 'en',
+			'source': 'en',
+			'target': 'ko',
 			'text': content
 		},
 		headers: {
