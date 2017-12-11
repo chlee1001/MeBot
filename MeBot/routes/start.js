@@ -5,7 +5,7 @@ module.exports = function (app, fs) {
 	// User Modules
 	var main = require('./functions/main'); // 처음으로..
 	var menu = require('./functions/menu'); // 메뉴..
-
+	var tran;
 	// 키보드
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../public/data/" + "keyboard.json", 'utf8', function (err, data) {
@@ -174,6 +174,7 @@ module.exports = function (app, fs) {
 					"type": "buttons",
 					"buttons": [
 						"사진분석 예시",
+						"주의사항",
 						"돌아가기"
 					]
 				}
@@ -184,23 +185,51 @@ module.exports = function (app, fs) {
 			}).send(JSON.stringify(message));
 
 		} else if (_obj.content == '사진분석 예시') {
+			
 			let message = {
 				"message": {
-					"text": '사진분석에서는 원하는 사진을 전송하면 text로 추출받을 수 있습니다.'
+					"photo": {
+						"url": 'http://kakao.mebot.kro.kr/sb/사진변환.jpg',
+						"width" : 640,
+						"height" : 1200
+					}
 				},
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
 						"사진분석",
-						"돌아가기"
+						"주의사항"
 					]
 				}
 			};
-
+			
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
-
+			
+		} else if (_obj.content == '주의사항') {
+			
+			let message = {
+				"message": {
+					"photo": {
+						"url": 'http://kakao.mebot.kro.kr/sb/주의사항.jpg',
+						"width" : 640,
+						"height" : 1200
+					}
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"사진분석",
+						"사진분석 예시"
+					]
+				}
+			};
+			
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+			
 		} else if (_obj.content == '날씨 정보') {
 			let message = {
 				"message": {
@@ -316,25 +345,65 @@ module.exports = function (app, fs) {
 		} else if (_obj.content == '번역기') {
 			let message = {
 				"message": {
-					"text": "안녕 나는 미봇번역기야! \n사용방법 !말, (돌아갈려면 '/취소')"
+					"text": '번역해주고싶은 언어를 골라주세요!'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"한글 to 영어",
+						"영어 to 한글",
+						"처음으로"
+					]
 				}
 			};
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
 
-		} else if (_obj.content.indexOf('!') > -1) { // 번역기 기능
+		} else if (_obj.content == '한글 to 영어') {
+			tran = _obj.content;
+			let message = {
+				"message": {
+					"text": "안녕 나는 한글 -> 영어 번역기야! 사용방법 !말"
+				}
+			};
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content == '영어 to 한글') {
+			tran = _obj.content;
+			let message = {
+				"message": {
+					"text": "안녕 나는 영어 -> 한글 번역기야! 사용방법 !말"
+				}
+			};
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));
+
+		} else if (_obj.content.indexOf('!') > -1) {
 			var result;
 			var content = _obj.content.replace('!', '');
-			var translate = require('./functions/translate');
-			translate.papago(content, function (result) {
+			if(tran == '한글 to 영어'){
+				var translate = require('./functions/translateKE');
+				translate.papago(content, function (result) {
 				console.log(result);
 
 				res.set({
 					'content-type': 'application/json'
 				}).send(JSON.stringify(result));
 			})
+			} else if(tran == '영어 to 한글'){
+				var translate = require('./functions/translateEK');
+				translate.papago(content, function (result) {
+				console.log(result);
 
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
+			}
 		} else if (_obj.content.indexOf('http') > -1) {
 			var result;
 			var content = _obj.content;
