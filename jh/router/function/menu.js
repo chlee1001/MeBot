@@ -1,15 +1,13 @@
 module.exports = function () {
-             var now=new Date();
 	let message = {
 		"message": {
-			"text":now.getSeconds()+""
+			"text": '메뉴'
 		},
 		"keyboard": {
 			"type": "buttons",
 			"buttons": [
-				"a",
-				"b","c"
-			]
+				"날짜",
+				"바로가기"			]
 		}
 	};
 	console.log(message);

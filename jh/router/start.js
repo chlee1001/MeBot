@@ -1,13 +1,18 @@
 module.exports = function (app, fs) {
-	// ?�보??
+	// User Modules
+	var main = require('./function/main'); // 筌ｌ꼷???곗쨮..
+	var menu = require('./function/menu'); // 筌롫뗀??.
+	var jsontext = '{"info":["http://www.gachon.ac.kr/index.html","http://wind.gachon.ac.kr/index.do","http://cafe.naver.com/gachon2010"]}';
+           var contact = JSON.parse(jsontext);
+	// ??삳궖??
 	app.get('/keyboard', function (req, res) {
 		fs.readFile(__dirname + "/../data/" + "keyboard.json", 'utf8', function (err, data) {
 			console.log(data);
 			res.end(data);
 		});
 	});
-     var now= new Date();
-	// 메시지
+
+	// 筌롫뗄?놅쭪?
 	app.post('/message', function (req, res) {
 		const _obj = {
 			user_key: req.body.user_key,
@@ -16,49 +21,105 @@ module.exports = function (app, fs) {
 		};
 		console.log(_obj.content)
 
-		if (_obj.content == 'a') {
-                               var fun1= require('./date/special')();           
+		if (_obj.content == "날짜") {   //?醫롮?甕곌쑵??
+			var date=require('./date/day')();      //?醫롮? 揶쎛?紐꾩궎疫?
+                                               
+			// 燁삳똾???곗쨮 ?袁⑸꽊
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(fun1));  //special date ���� 
+			}).send(JSON.stringify(date));
 
-		} 
-                        /*     else if (now.getSeconds()%5==0){
-                                                   var fun2 = require ('./date/fun2')();
-                                              	res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(fun2));  //special date ���� 
+		}
+		 else if (_obj.content == "바로가기") {
+		 var move=require('./date/go')();
 
-                                        }*/
-                              else if (_obj.content == 'b') {
-			
-		var fun2 = require ('./date/fun2')();			// 카톡?�로 ?�송
 			res.set({
 				'content-type': 'application/json'
-			}).send(JSON.stringify(fun2));  //special date ���� 
-                                       }
-		else{
-			let message={
-                                                  "message" : {
-                                                            "text" : now.getSeconds()+""
-                                                   },
-                                                              "keyboard": {
+			}).send(JSON.stringify(move));
+
+		}
+		 else if (_obj.content == '오늘에 대해 알아보기') {
+			var info=require('./date/dateinfo')();
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(info));
+
+		}
+ else if (_obj.content == '학교 홈페이지') {
+	let message = {
+				"message": {
+					"text": contact.info[0]
+				},
+				"keyboard": {
 					"type": "buttons",
 					"buttons": [
-						"a",
-                                                                                   "b",
-                                                                                                  "c"
+					"날짜",
+					      	"바로가기"
+					
 					]
 				}
+			};	
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));	
 
-                                       };
-                                               res.set({
+		}
+ else if (_obj.content == '윈드 가천') {
+	let message = {
+				"message": {
+					"text": contact.info[1]
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+					"날짜",
+					      	"바로가기"
+					
+					]
+				}
+			};	
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));	
+
+		}
+ else if (_obj.content == '학과 카페') {
+	let message = {
+				"message": {
+					"text": contact.info[2]
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"날짜",
+					      	"바로가기"
+					
+					]
+				}
+			};	
+			res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));	
+		}	
+		 else if (_obj.content == '넘기기') {
+					let message = {
+				"message": {
+					"text": '돌아가기'
+				},
+				"keyboard": {
+					"type": "buttons",
+					"buttons": [
+						"날짜",
+					      	"바로가기"
+					
+					]
+				}
+			};	
+			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));			
-		}
-
-	});
-
+			}
+		});
 	app.post('/friend', (req, res) => {
 		const user_key = req.body.user_key;
 		console.log(`${user_key}`);

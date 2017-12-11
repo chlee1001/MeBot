@@ -1,14 +1,14 @@
 module.exports = function () {
-             var now=new Date();
 	let message = {
 		"message": {
-			"text":"now "+now.getHours()+" : "+now.getMinutes()+ " " +now.getSeconds()+' s'
+			"text": '처음으로'
 		},
 		"keyboard": {
 			"type": "buttons",
 			"buttons": [
-				"a",
-				"b","c"
+				"날짜",
+				"바로가기"
+
 			]
 		}
 	};
