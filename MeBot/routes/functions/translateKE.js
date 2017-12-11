@@ -1,5 +1,5 @@
 /**
- * Created by chlee1001 on 2017.10.30.
+ * Created by chlee1001 on 2017-11-06.
  */
 module.exports.papago = function (content, callback) {
 	//네이버 TTS 용 패키지 웹 요청 용
@@ -15,8 +15,8 @@ module.exports.papago = function (content, callback) {
 		url: api_url,
 		//한국어(source : ko) > 영어 (target : en ), 카톡에서 받은 메시지(text)
 		form: {
-			'source': 'en',
-			'target': 'ko',
+			'source': 'ko',
+			'target': 'en',
 			'text': content
 		},
 		headers: {

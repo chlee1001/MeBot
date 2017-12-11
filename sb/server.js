@@ -13,7 +13,7 @@ var server = app.listen(3003, function () { // port 3003으로 서버 실행
 	});
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded()); 
 app.use(session({
 		secret: '@#@$MYSIGN#@$#$',
 		resave: false,
