@@ -185,51 +185,53 @@ module.exports = function (app, fs) {
 			}).send(JSON.stringify(message));
 
 		} else if (_obj.content == '사진분석 예시') {
-			
+
 			let message = {
 				"message": {
 					"photo": {
 						"url": 'http://kakao.mebot.kro.kr/sb/사진변환.jpg',
-						"width" : 640,
-						"height" : 1200
+						"width": 640,
+						"height": 1200
 					}
 				},
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
 						"사진분석",
-						"주의사항"
+						"주의사항",
+						'돌아가기'
 					]
 				}
 			};
-			
+
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
-			
+
 		} else if (_obj.content == '주의사항') {
-			
+
 			let message = {
 				"message": {
 					"photo": {
 						"url": 'http://kakao.mebot.kro.kr/sb/주의사항.jpg',
-						"width" : 640,
-						"height" : 1200
+						"width": 640,
+						"height": 1200
 					}
 				},
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
 						"사진분석",
-						"사진분석 예시"
+						"사진분석 예시",
+						'돌아가기'
 					]
 				}
 			};
-			
+
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(message));
-			
+
 		} else if (_obj.content == '날씨 정보') {
 			let message = {
 				"message": {
@@ -352,7 +354,7 @@ module.exports = function (app, fs) {
 					"buttons": [
 						"한글 to 영어",
 						"영어 to 한글",
-						"처음으로"
+						'돌아가기'
 					]
 				}
 			};
@@ -385,24 +387,24 @@ module.exports = function (app, fs) {
 		} else if (_obj.content.indexOf('!') > -1) {
 			var result;
 			var content = _obj.content.replace('!', '');
-			if(tran == '한글 to 영어'){
+			if (tran == '한글 to 영어') {
 				var translate = require('./functions/translateKE');
 				translate.papago(content, function (result) {
-				console.log(result);
+					console.log(result);
 
-				res.set({
-					'content-type': 'application/json'
-				}).send(JSON.stringify(result));
-			})
-			} else if(tran == '영어 to 한글'){
+					res.set({
+						'content-type': 'application/json'
+					}).send(JSON.stringify(result));
+				})
+			} else if (tran == '영어 to 한글') {
 				var translate = require('./functions/translateEK');
 				translate.papago(content, function (result) {
-				console.log(result);
+					console.log(result);
 
-				res.set({
-					'content-type': 'application/json'
-				}).send(JSON.stringify(result));
-			})
+					res.set({
+						'content-type': 'application/json'
+					}).send(JSON.stringify(result));
+				})
 			}
 		} else if (_obj.content.indexOf('http') > -1) {
 			var result;
