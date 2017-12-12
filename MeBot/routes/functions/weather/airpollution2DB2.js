@@ -26,7 +26,7 @@ function handleDisconnect() {
 	connection.connect(function (err) { // The server is either down
 		if (err) { // or restarting (takes a while sometimes).
 			console.log('error when connecting to db:', err);
-			setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+			setTimeout(handleDisconnect, 10000); // We introduce a delay before attempting to reconnect,
 		} // to avoid a hot loop, and to allow our node script to
 		else {
 			console.log('Connection as id ' + connection.threadId);
@@ -65,6 +65,8 @@ function updateDB(connection) {
 			//console.log(body);
 			var xml = body;
 			parser.parseString(xml, function (err, result) {
+				console.log('API connection success');
+				
 				//console.log(result.response.header[0].resultCode[0]);
 				if ((result.response.header[0].resultCode) == 22) {
 					console.log("DB result error: code 22");

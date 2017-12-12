@@ -23,7 +23,7 @@ module.exports = function (app, mysql, connection) {
 		connection.connect(function (err) { // The server is either down
 			if (err) { // or restarting (takes a while sometimes).
 				console.log('error when connecting to db:', err);
-				setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+				setTimeout(handleDisconnect, 10000); // We introduce a delay before attempting to reconnect,
 			} // to avoid a hot loop, and to allow our node script to
 			else {
 				console.log('Connection as id ' + connection.threadId);
@@ -63,66 +63,69 @@ function updateDB(connection) {
 			var xml = body;
 			parser.parseString(xml, function (err, result) {
 
-				//var objBody = JSON.parse(strBody);
-				result = (result.response.body[0].items[0].item[12]);
-
-				// table 초기화
-				var deleteQuery = connection.query(
-						"DELETE FROM airpollution WHERE id = 1",
-						function (err, result) {
-						if (err) {
-							console.log('db err: ' + err);
-							throw err;
-						}
-						//console.log('Del_success ');
-					});
-
-				// Insert data to table
-				var n_locate = '측정소 위치: ' + result.stationName; // 측정소 위치
-				var n_date = '측정시간: ' + result.dataTime; // 측정 시간
-				//var o3 = result.o3Value[0]; // 오존 농도
-				var n_pm10 = '미세먼지 농도: ' + result.pm10Value[0]; // 미세먼지 (PM10) 농도
-				var n_pm10Grade = result.pm10Grade[0]; // 미세먼지 등급
-				switch (n_pm10Grade) { // 미세먼지 등급 변환
-				case '1':
-					n_pm10Grade = '좋음';
-					break;
-				case '2':
-					n_pm10Grade = '보통';
-					break;
-				case '3':
-					n_pm10Grade = '니쁨';
-					break;
-				case '4':
-					n_pm10Grade = '매우나쁨';
-					break;
-				default:
-					n_pm10Grade = 'error';
-				}
-
-				if (result.pm10Value[0] == '-') {
-					IfParinsError();
+				if ((result.response.header[0].resultCode) == 22) {
+					console.log("DB result error: code 22");
 				} else {
+					//var objBody = JSON.parse(strBody);
+					result = (result.response.body[0].items[0].item[12]);
 
-					var airpollution = {
-						id: ' 1 ',
-						locate: n_locate,
-						date: n_date,
-						pm10: n_pm10,
-						pm10Grade: n_pm10Grade
-					};
-
-					var query = connection.query(
-							"Insert into airpollution set ?", airpollution,
+					// table 초기화
+					var deleteQuery = connection.query(
+							"DELETE FROM airpollution WHERE id = 1",
 							function (err, result) {
 							if (err) {
-								console.log(' db err: ' + err);
+								console.log('db err: ' + err);
 								throw err;
 							}
-							console.log('success ' + today);
+							//console.log('Del_success ');
 						});
-				}
 
+					// Insert data to table
+					var n_locate = '측정소 위치: ' + result.stationName; // 측정소 위치
+					var n_date = '측정시간: ' + result.dataTime; // 측정 시간
+					//var o3 = result.o3Value[0]; // 오존 농도
+					var n_pm10 = '미세먼지 농도: ' + result.pm10Value[0]; // 미세먼지 (PM10) 농도
+					var n_pm10Grade = result.pm10Grade[0]; // 미세먼지 등급
+					switch (n_pm10Grade) { // 미세먼지 등급 변환
+					case '1':
+						n_pm10Grade = '좋음';
+						break;
+					case '2':
+						n_pm10Grade = '보통';
+						break;
+					case '3':
+						n_pm10Grade = '니쁨';
+						break;
+					case '4':
+						n_pm10Grade = '매우나쁨';
+						break;
+					default:
+						n_pm10Grade = 'error';
+					}
+
+					if (result.pm10Value[0] == '-') {
+						IfParinsError();
+					} else {
+
+						var airpollution = {
+							id: ' 1 ',
+							locate: n_locate,
+							date: n_date,
+							pm10: n_pm10,
+							pm10Grade: n_pm10Grade
+						};
+
+						var query = connection.query(
+								"Insert into airpollution set ?", airpollution,
+								function (err, result) {
+								if (err) {
+									console.log(' db err: ' + err);
+									throw err;
+								}
+								console.log('success ' + today);
+							});
+					}
+				}
 			});
 
 		} else {
