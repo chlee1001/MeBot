@@ -15,6 +15,7 @@ var schedule = require('node-schedule');
 var restaurantListDB = require('./routes/functions/meal/restaurantList2DB.js');
 var airpollution2DB = require('./routes/functions/weather/airpollution2DB.js');
 var weather2DB = require('./routes/functions/weather/weather2DB.js');
+var special2DB = require('./routes/functions/specialDay/specialDay2DB.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +43,7 @@ app.get('/list', function (req, res) {
 	var db = require('./routes/functions/meal/restaurantList.js')(req, res);
 });
 
-// call restaurantDB connection
+// call DB connection
 var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB update Scheduler: 매월 1일 6시
 		restaurantListDB();
 	});
@@ -53,6 +54,10 @@ var airpollutionDB = schedule.scheduleJob('15 * * * *', function () {
 
 var weatherDB = schedule.scheduleJob('10 * * * *', function () {
 		weather2DB();
+	});
+
+var specialDB = schedule.scheduleJob('00 00 01 1 */1 *', function () {
+		special2DB();
 	});
 
 // Connect IO

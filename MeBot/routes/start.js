@@ -24,28 +24,35 @@ module.exports = function (app, fs) {
 		console.log(_obj.content)
 
 		if (_obj.content == '시작하기') { // 시작하기
-			let message = {
-				"message": {
-					"text": '안녕 나는 미봇이야!!(씨익)(신나)\n내가 처음이면 처음화면으로 돌아가서 사용방법을 눌러봐!!(제발)\n'
-				},
-				"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						'학식',
-						"식당추천",
-						"날씨 정보",
-						'학번 찾기',
-						"번역기",
-						"사진분석",
-						'무당이 시간표',
-						"처음으로"
-					]
-				}
-			};
+			var result = '';
+			var gostart = require('./functions/goStart');
+			gostart.start(function (result) {
 
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
+				result += '\n안녕 나는 미봇이야!!(씨익)(신나)\n내가 처음이면 처음화면으로 돌아가서 사용방법을 눌러봐!!(제발)\n';
+
+				let message = {
+					"message": {
+						"text": result
+					},
+					"keyboard": {
+						"type": "buttons",
+						"buttons": [
+							'학식',
+							"식당추천",
+							"날씨 정보",
+							'학번 찾기',
+							"번역기",
+							"사진분석",
+							'무당이 시간표',
+							"처음으로"
+						]
+					}
+				};
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(message));
+			});
 
 		} else if (_obj.content == '사용방법') {
 			let message = {
