@@ -12,25 +12,27 @@ module.exports = function (app, mysql, connection) {
 		host: "localhost",
 		user: "root",
 		password: "a40844084",
-		database: "computerNetwork"
+		database: "computerNetwork",
+		connectionLimit: 50
 	};
 
 	function handleDisconnect() {
-		var connection = mysql.createConnection(db_config); // Recreate the connection, since
+		var pool = mysql.createPool(db_config); // Recreate the connection pool, since
 		// the old one cannot be reused.
 
-		connection.connect(function (err) { // The server is either down
+		// Get Connection in Pool
+		pool.getConnection(function (err, connection) { // The server is either down
 			if (err) { // or restarting (takes a while sometimes).
 				console.log('error when connecting to db:', err);
-				setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+				setTimeout(handleDisconnect, 5000); // We introduce a delay before attempting to reconnect,
+				connection.release(); // 커넥션을 풀에 반환
 			} // to avoid a hot loop, and to allow our node script to
 			else {
-				console.log('Connection as id ' + connection.threadId);
 				updateDB(connection);
 			}
 		}); // process asynchronous requests in the meantime.
 		// If you're also serving http, display a 503 error.
-		connection.on('error', function (err) {
+		pool.on('error', function (err) {
 			console.log('db error', err);
 			if (err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
 				handleDisconnect(); // lost due to either server restart, or a
@@ -62,7 +64,7 @@ function updateDB(connection) {
 	request.get(options, function (error, response, body) {
 		// request 성공했으면..
 		if (!error && response.statusCode == 200) {
-
+			console.log('API connection success');
 			// json 파싱
 			var objBody = JSON.parse(response.body);
 
@@ -128,7 +130,7 @@ function updateDB(connection) {
 				minTemperature: n_tempMin1
 			};
 
-			var tommorrowweather = {
+			var tomorrowweather = {
 				id: '2',
 				sky: n_sky2,
 				maxTemperature: n_tempMax2,
@@ -142,17 +144,17 @@ function updateDB(connection) {
 						console.log(' db err: ' + err);
 						throw err;
 					}
-					console.log('success ' + today);
+					console.log('success todayweather' + today);
 				});
 
 			var query = connection.query(
-					"Insert into weather set ?", tommorrowweather,
+					"Insert into weather set ?", tomorrowweather,
 					function (err, result) {
 					if (err) {
 						console.log(' db err: ' + err);
 						throw err;
 					}
-					console.log('success ' + today);
+					console.log('success tomorrowweather' + today);
 				});
 
 		} else {
