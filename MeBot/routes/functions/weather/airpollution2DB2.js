@@ -84,7 +84,7 @@ function updateDB(connection) {
 								console.log('db err: ' + err);
 								throw err;
 							}
-							//console.log('Del_success ');
+							console.log('airpollution2 Del_success ');
 						});
 
 					// Insert data to table
@@ -120,7 +120,7 @@ function updateDB(connection) {
 								console.log(' db err: ' + err);
 								throw err;
 							}
-							console.log('success ' + today);
+							console.log('success airpollution2 ' + today);
 						});
 				}
 			});

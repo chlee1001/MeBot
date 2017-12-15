@@ -40,7 +40,7 @@ module.exports = function (app, fs) {
 							'학식',
 							"식당추천",
 							"날씨 정보",
-							'학번 찾기',
+							'학번 QR코드',
 							"번역기",
 							"사진분석",
 							'무당이 시간표',
@@ -306,7 +306,7 @@ module.exports = function (app, fs) {
 						'학식',
 						"식당추천",
 						"날씨 정보",
-						'학번 찾기',
+						'학번 QR코드',
 						"번역기",
 						"사진분석",
 						'무당이 시간표',
@@ -330,7 +330,7 @@ module.exports = function (app, fs) {
 				'content-type': 'application/json'
 			}).send(JSON.stringify(main()));
 
-		} else if (_obj.content == '학번 찾기') {
+		} else if (_obj.content == '학번 QR코드') {
 			let message = {
 				"message": {
 					"text": "학번을 찾고 싶으면 '학번 201700000' 라고 입력해!!"

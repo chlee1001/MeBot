@@ -63,7 +63,7 @@ function updateDB(connection) {
 							console.log('db err: ' + err);
 							throw err;
 						}
-						//console.log('Del_success ');
+						console.log('restaurantList Del_success');
 					});
 			}
 
@@ -99,7 +99,7 @@ function updateDB(connection) {
 							console.log('db err: ' + err);
 							throw err;
 						}
-						//	console.log('success ');
+						console.log('success restaurantList ' + today);
 					});
 
 			}

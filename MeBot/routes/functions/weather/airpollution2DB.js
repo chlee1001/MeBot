@@ -78,7 +78,7 @@ function updateDB(connection) {
 								console.log('db err: ' + err);
 								throw err;
 							}
-							//console.log('Del_success ');
+							console.log('airpollution Del_success ');
 						});
 
 					// Insert data to table

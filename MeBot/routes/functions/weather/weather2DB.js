@@ -144,7 +144,7 @@ function updateDB(connection) {
 						console.log(' db err: ' + err);
 						throw err;
 					}
-					console.log('success todayweather' + today);
+					console.log('success todayweather ' + today);
 				});
 
 			var query = connection.query(
@@ -154,7 +154,7 @@ function updateDB(connection) {
 						console.log(' db err: ' + err);
 						throw err;
 					}
-					console.log('success tomorrowweather' + today);
+					console.log('success tomorrowweather ' + today);
 				});
 
 		} else {
