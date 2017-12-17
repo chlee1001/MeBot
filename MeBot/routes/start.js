@@ -25,7 +25,7 @@ module.exports = function (app, fs) {
 
 		if (_obj.content == '시작하기') { // 시작하기
 			var result = '';
-			var gostart = require('./functions/goStart');
+			var gostart = require('./functions/specialDay/goStart');
 			gostart.start(function (result) {
 
 				result += '\n안녕 나는 미봇이야!!(씨익)(신나)\n내가 처음이면 처음화면으로 돌아가서 사용방법을 눌러봐!!(제발)\n';
@@ -427,14 +427,17 @@ module.exports = function (app, fs) {
 			})
 
 		} else {
-			let message = {
-				"message": {
-					"text": "준비중이야"
-				}
-			};
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(main()));
+			var result;
+			var content = _obj;
+			var test = require('./functions/test');
+
+			test.newW(content, function (result) {
+				console.log(result);
+
+				res.set({
+					'content-type': 'application/json'
+				}).send(JSON.stringify(result));
+			})
 
 			/*
 			var result;

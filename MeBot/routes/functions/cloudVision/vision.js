@@ -17,47 +17,50 @@ var result;
 module.exports.ocr = function (content, callback) {
 	//Initialize the api
 
-//Build the request payloads
+	//Build the request payloads
 
-const download = require('image-downloader')
+	const download = require('image-downloader')
 
-// Download to a directory and save with the original filename
-const options = {
-  url: content,
-  dest: './routes/functions/cloudVision/test.jpg'                  // Save to /path/to/dest/image.jpg
-}
+		// Download to a directory and save with the original filename
+		const options = {
+		url: content,
+		dest: './routes/functions/cloudVision/test.jpg' // Save to /path/to/dest/image.jpg
+	}
 
-download.image(options)
-  .then(({ filename, image }) => { 
-    console.log('File saved to', filename);
-	  
-var d = requtil.createRequests().addRequest(
+	download.image(options)
+	.then(({
+			filename,
+			image
+		}) => {
+		console.log('File saved to', filename);
 
-		requtil.createRequest('./routes/functions/cloudVision/test.jpg')
+		var d = requtil.createRequests().addRequest(
 
-		.withFeature('TEXT_DETECTION', 3)
+				requtil.createRequest('./routes/functions/cloudVision/test.jpg')
 
-		.build())
+				.withFeature('TEXT_DETECTION', 3)
 
-//Do query to the api server
-vision.query(d, function (e, r, d) {
+				.build())
 
-	if (e)
-		console.log('ERROR:', e);
-	
-	result = d.responses[0].fullTextAnnotation.text;
-	console.log(result);
-	let message = {
-				"message": {
-					"text": result
+			//Do query to the api server
+			vision.query(d, function (e, r, d) {
 
-				},
-			};
-			//카톡에 메시지 전송
-			return callback(message);
-});
-  }).catch((err) => {
-    throw err
-  })
+				if (e)
+					console.log('ERROR:', e);
+
+				result = d.responses[0].fullTextAnnotation.text;
+				console.log(result);
+				let message = {
+					"message": {
+						"text": result
+
+					},
+				};
+				//카톡에 메시지 전송
+				return callback(message);
+			});
+	}).catch ((err) => {
+		throw err
+	})
 
 }

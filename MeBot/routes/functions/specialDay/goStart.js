@@ -32,15 +32,12 @@ module.exports.start = function (callback) {
 		if (!err) {
 			if (!rows.length) {
 				data = '오늘은 ' + today + '입니다.';
-				//console.log(data);
 				return callback(data);
 			} else {
 				for (var i = 0; i < rows.length; i++) {
 					if (rows[i].date == ctoday) {
 						data += rows[i].dateName + ' ';
-					} else {
-						data = '오늘은 ' + today + '입니다.';
-						return callback(data);
+						break;
 					}
 				}
 				var result = '오늘은 ' + today + ' ' + data + '입니다.';
