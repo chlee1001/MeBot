@@ -4,7 +4,7 @@
 module.exports = function (content) {
 	let message = {
 		"message": {
-			"text": '문의사항은 깃허브 Issues에 남겨주세요. (하트뿅)(하트뿅)',
+			"text": '문의사항은 깃허브 Issues에 남겨주시거나 1대1 채팅으로 보내주세요!! (하트뿅)(하트뿅)',
 			"message_button": {
 				"label": '여기야',
 				"url": 'https://github.com/chlee1001/MeBot/issues'

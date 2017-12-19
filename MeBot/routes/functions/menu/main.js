@@ -4,7 +4,7 @@
 module.exports = function () {
 	let message = {
 		"message": {
-			"text": '처음으로'
+			"text": '초기화면'
 		},
 		"keyboard": {
 			"type": "buttons",

@@ -49,7 +49,6 @@ module.exports.todayWeather = function (callback) {
 				"keyboard": {
 					"type": "buttons",
 					"buttons": [
-						"현재 날씨",
 						"내일 날씨",
 						"돌아가기"
 					]

@@ -4,7 +4,6 @@
 
 // m+학번+현재시각(YYYYMMDDHH24MISS)
 var fs = require("fs");
-var schedule = require('node-schedule');
 require('date-utils');
 
 var flag = 0;
@@ -27,12 +26,9 @@ module.exports.studentID = function (content, callback) {
 				"type": 'buttons',
 				"buttons": [
 					'학식',
-					"식당추천",
-					"날씨 정보",
-					'학번 찾기',
-					"번역기",
-					"사진",
-					"처음으로"
+					'학번 QR코드',
+					'무당이 시간표',
+					'돌아가기'
 				]
 			}
 		};

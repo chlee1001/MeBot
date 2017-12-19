@@ -48,7 +48,7 @@ module.exports.weather = function (callback) {
 
 				result = '현재 ' + today + '의 날씨 정보(해)(구름)(비)\n\n' + sky
 					 + '\n현재 기온: ' + temperature.tc + '℃\n최고 기온: ' + temperature.tmax
-					 + '℃\n최저 기온: ' + temperature.tmin + '℃\n습도: ' + humidity + '%\n\n미세먼지\n' + result2;
+					 + '℃\n최저 기온: ' + temperature.tmin + '℃\n습도: ' + humidity + '%\n\n미세먼지 정보\n' + result2;
 
 				//카톡으로 번역된 메시지를 전송하기 위한 메시지
 				let message = {
