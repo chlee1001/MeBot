@@ -21,7 +21,7 @@ module.exports = function (req, res) {
 			console.log('Connection as id ' + connection.threadId);
 	});
 
-	connection.query('SELECT * from restaurantList', function (err, rows, fields) {
+	connection.query('SELECT * from restaurantList', function (err, rows, fields) { // DB 호출
 		connection.end();
 		if (!err) {
 			var data = "<html><head><title>식당리스트</title></head>"
