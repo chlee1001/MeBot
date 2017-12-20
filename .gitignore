@@ -7,11 +7,12 @@ getAccessToken.js
 My First Project-c6eb31f048f8.json
 index.php
 phpinfo.php
-
+*.pptx
 
 *.png
 *.jpg
 *.jpeg
+*.gif
 
 # Logs
 logs
