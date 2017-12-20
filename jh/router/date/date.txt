@@ -1,0 +1,595 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
+<head>
+<link rel="shortcut icon" href="/favicon_32x32.ico" type="image/x-icon">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-XSS-Protection" content="1">
+<title>'12월 20일'의 검색결과 : 네이버 국어사전</title>
+<link rel="stylesheet" type="text/css" href="http://dicimg.naver.net/krdic/style/201709151648/css/entry_add.css?201707051656">
+<link rel="stylesheet" type="text/css" href="http://dicimg.naver.net/krdic/style/201709151648/css/krdic.css?201707051656">
+<link rel="stylesheet" type="text/css" href="http://dicimg.naver.net/krdic/style/201709151648/css/layer.css?201707051656">
+<link rel="stylesheet" type="text/css" href="http://dicimg.naver.net/gnbcommon/style/gnbcommon/css/onenaver_gnb.css?2017122018">
+<!-- FACEBOOK's OG Tag -->
+<meta property="og:title" content="네이버 국어사전" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="http://dicimg.naver.net/krdic/img/dict_OG_krdic.png?$201707051656" />
+<meta property="og:description" content="'12월 20일' : 네이버 국어사전 검색 결과
+	" />
+<!-- TWITTER's Card data -->
+<meta name="twitter:title" content="네이버 국어사전" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:image" content="http://dicimg.naver.net/krdic/img/dict_OG_krdic.png?201707051656" />
+<meta name="twitter:description" content="'12월 20일' : 네이버 국어사전 검색 결과
+	" />
+<script type="text/javascript" src="/js/nclktag.js?201707051656"></script>
+<script type="text/javascript" language="javascript" src="http://static.naver.com/common/js/cs_ops_webncc.js?201707051656"></script>
+<script type="text/javascript" src="/js/jindo.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/jindo.components.js?201707051656"></script>
+<script type="text/javascript" src="/js/jindo_component_slider.js?201707051656"></script>
+<script type="text/javascript" src="/js/common.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/search.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/dic.setSearchSelectType.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/WordBook.AddToWordBook.js?201707051656"></script>
+<script type="text/javascript" src="/js/acNewp.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/lcslog.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/store.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/dict.login.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/dict.eval.min.js?201707051656"></script>
+<script type="text/javascript">
+function klink(str) 
+{
+	    var link_location;  
+ 
+		/* 아래 조건으로는 판단이 모호하고, IE11에서도 encode를 않해주는 경우 400 error 가 발생하므로 모든 브라우저에서 encode 해준다.
+	    if (navigator.appName == 'Netscape')
+	        link_location = "/search.nhn?query="+str;       
+	    else    
+	        link_location = "/search.nhn?query="+encodeURIComponent(str);
+	    */
+	    link_location = "/search.nhn?query="+encodeURIComponent(str);
+	    this.location = link_location;
+}
+
+jindo.$Fn(function(){
+	lcs_do();
+	new SetSearchSelectType();
+	try {
+		if (typeof(getGNB) != "undefined") {
+			getGNB();
+		}
+	} catch(e) {
+	}
+	// 로그인 여부 체크
+	dict.LoginUtil.checkLogin();	
+}).attach(document, "domready");
+</script>
+<script language="javascript">
+
+/*
+	var wCookie = document.cookie;
+	if (wCookie.length >= 1){
+		var rReg = new RegExp('\\bwrdbook_notice_popup_krdic=([^;]*)(;|$)');
+		var rCokie = wCookie.match(rReg);
+		var now = new Date(1401141600000);
+		var nowt = new Date();
+		var nowt2 = new Date('05/24/2014');
+		if( rCokie == null && now.getTime() > nowt.getTime() && nowt.getTime() > nowt2.getTime() ) {
+			var host = "http://dic.naver.com";
+			window.open('http://dic.naver.com/html/wrdbook_notice.html?ref=krdic', 'popup', 'top=100, left=100, width=300, height=225, status=no, scrollbar=no, toolbar=no, menubar=no, location=no, resizable=no');  
+		}
+	}
+*/
+</script></head>
+<body>
+<OBJECT id="PronunciationFlash" class="blind" codeBase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" classid=clsid:d27cdb6e-ae6d-11cf-96b8-444553540000 width=0 align=middle height=0><PARAM NAME="_cx" VALUE="26" /><PARAM NAME="_cy" VALUE="26" /><PARAM NAME="FlashVars" VALUE="" /><PARAM NAME="Movie" VALUE="/js/pronunciation.swf" /><PARAM NAME="Src" VALUE="/js/pronunciation.swf" /><PARAM NAME="WMode" VALUE="Transparent" /><PARAM NAME="Play" VALUE="0" /><PARAM NAME="Loop" VALUE="-1" /><PARAM NAME="Quality" VALUE="Medium" /><PARAM NAME="SAlign" VALUE="LT" /><PARAM NAME="Menu" VALUE="0" /><PARAM NAME="Base" VALUE="" /><PARAM NAME="AllowScriptAccess" VALUE="always" /><PARAM NAME="Scale" VALUE="NoScale" /><PARAM NAME="DeviceFont" VALUE="0" /><PARAM NAME="EmbedMovie" VALUE="0" /><PARAM NAME="BGColor" VALUE="FFFFFF" /><PARAM NAME="SWRemote" VALUE="" /><PARAM NAME="MovieData" VALUE=""><PARAM NAME="SeamlessTabbing" VALUE="1" /><PARAM NAME="Profile" VALUE="0" /><PARAM NAME="ProfileAddress" VALUE="" /><PARAM NAME="ProfilePort" VALUE="0" /><PARAM NAME="AllowNetworking" VALUE="all" /><PARAM NAME="AllowFullScreen" VALUE="false" /><script type="text/javascript">if ((navigator.userAgent.indexOf('MSIE') >= 0)&&(navigator.userAgent.indexOf('Opera') < 0)){}else{document.write("<embed name='PronunciationFlash' src='/js/pronunciation.swf' menu='false' quality='high' wmode='transparent' bgcolor='#ffffff' width='1' height='1' name='uploader' align='middle' allowScriptAccess='always' allowFullScreen='false' type='application/x-shockwave-flash' pluginspage='http://www.macromedia.com/go/getflashplayer' />");}</script></OBJECT>
+<a href="#content" class="skip_to_content" tabindex="2">본문 바로가기</a>
+<div id="wrap">
+	<!-- HEADER -->
+		
+<div id="header">
+	<!-- 공통 GNB -->
+	<div class="Ngnb_wrap">
+	    <div class="Ngnb">
+	        <div class="Ngnb_inner">
+	            <a href="http://www.naver.com" class="Nlogo_link" onclick="clickcr(this, 'DNB.naver','','',event);"><span class="Nsp_gnb">NAVER</span></a>
+	            <!--[D] 영문버전일때 lang="en" 추가 -->
+	            <div class="Ngnb_service">
+	                <h1 class="Nservice_item"><a href="http://dic.naver.com" class="Nhome Ndic" onclick="clickcr(this, 'DNB.dic','','',event);"><span class="Nsp_gnb">사전</span></a></h1>
+	                <span class="Nservice_subitem"><a href="http://translate.naver.com" class="Ntranslate" onclick="clickcr(this, 'DNB.translation','','',event);"><span class="Nsp_gnb">번역기</span></a></span>
+	                <span class="Nservice_subitem"><a href="http://usertranslation.naver.com" class="Nusertranslation" onclick="clickcr(this, 'DNB.usetrans','','',event);"><span class="Nsp_gnb">참여번역</span></a></span>
+	                <span class="Nservice_subitem"><a href="http://terms.naver.com" class="Nknowledge" onclick="clickcr(this, 'DNB.terms','','',event);"><span class="Nsp_gnb">지식백과</span></a></span>
+	            </div>
+	            <div class="Ngnb_common">
+	                <div id="gnb">
+	                     
+	                </div>
+	                <!-- //GNB -->
+	            </div>
+	        </div>
+	    </div>
+	    <div class="Nlnb" id="Nlnb">
+	        <div class="Nlnb_inner">
+	            <ul class="Nnav">
+		            <!--[D] 선택메뉴에 Nnav_item_active 추가-->
+		            <li class="Nnav_cell"><a href="http://dic.naver.com" id="_id_dichome_href" onclick="clickcr(this, 'DNB.dichome','','',event);" class="Nnav_item">사전홈</a><span id="_id_dichome_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_dichome_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://endic.naver.com" id="_id_endic_href" onclick="clickcr(this, 'DNB.endic','','',event);" class="Nnav_item">영어</a><span id="_id_endic_new" style="display:none" class="Nsp_gnb Nnew" >신규추가</span><span id="_id_endic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://krdic.naver.com" id="_id_krdic_href" onclick="clickcr(this, 'DNB.krdic','','',event);" class="Nnav_item Nnav_item_active">국어</a><span id="_id_krdic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_krdic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://hanja.naver.com" id="_id_hanja_href" onclick="clickcr(this, 'DNB.hanja','','',event);" class="Nnav_item">한자</a><span id="_id_hanja_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_hanja_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://jpdic.naver.com" id="_id_jpdic_href" onclick="clickcr(this, 'DNB.jpdic','','',event);"  class="Nnav_item">일본어</a><span id="_id_jpdic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_jpdic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://cndic.naver.com" id="_id_cndic_href" onclick="clickcr(this, 'DNB.cndic','','',event);"  class="Nnav_item">중국어</a><span id="_id_cndic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_cndic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://frdic.naver.com" id="_id_frdic_href" onclick="clickcr(this, 'DNB.frdic','','',event);"  class="Nnav_item">프랑스어</a><span id="_id_frdic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_frdic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://spdic.naver.com" id="_id_spdic_href" onclick="clickcr(this, 'DNB.spdic','','',event);"  class="Nnav_item">스페인어</a><span id="_id_spdic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_spdic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://dedic.naver.com" id="_id_dedic_href" onclick="clickcr(this, 'DNB.dedic','','',event);"  class="Nnav_item">독일어</a><span id="_id_dedic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_dedic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>
+		            <li class="Nnav_cell"><a href="http://vndic.naver.com" id="_id_vndic_href" onclick="clickcr(this, 'DNB.vndic','','',event);"  class="Nnav_item">베트남어</a><span id="_id_vndic_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_vndic_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span></li>    
+		            <!--[D] 더보기 메뉴는 Nmore 클래스 추가-->
+		            <li class="Nnav_cell Nmore">
+		                <!--[D] 마우스오버시 Nnav_item_active 추가
+		                        Nmore의 영역을 커서가 벗어나면 해당 Nnav_item의 Nnav_item_active 삭제
+		                -->
+		                <a href="javascript:;" class="Nnav_item" id ="_id_more_layer" onclick="MoreOnclick(); clickcr(this, 'DNB.lmore', '', '',event); return false;" ><span class="Nnav_txt">더보기</span><span id="_id_more_new" style="display:none" class="Nsp_gnb Nnew">신규추가</span><span id="_id_more_up" style="display:none" class="Nsp_gnb Nupdate">업데이트</span><span class="Nsp_gnb Nico_more"></span></a>
+		                <div class="Nmore_dic" id ="_id_li_contain">
+		                     
+		                </div>
+		            </li>
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+	<!-- lazyload 신규버전 적용 -->
+	<script type="text/javascript">
+		LazyLoad=(function(doc){var env,head,pending={},pollCount=0,queue={css:[],js:[]},styleSheets=doc.styleSheets;function createNode(name,attrs){var node=doc.createElement(name),attr;for(attr in attrs){if(attrs.hasOwnProperty(attr)){node.setAttribute(attr,attrs[attr])}}return node}function finish(type){var p=pending[type],callback,urls;if(p){callback=p.callback;urls=p.urls;urls.shift();pollCount=0;if(!urls.length){callback&&callback.call(p.context,p.obj);pending[type]=null;queue[type].length&&load(type)}}}function getEnv(){var ua=navigator.userAgent;env={async:doc.createElement("script").async===true};(env.webkit=/AppleWebKit\//.test(ua))||(env.ie=/MSIE|Trident/.test(ua))||(env.opera=/Opera/.test(ua))||(env.gecko=/Gecko\//.test(ua))||(env.unknown=true)}function load(type,urls,callback,obj,context){var _finish=function(){finish(type)},isCSS=type==="css",nodes=[],i,len,node,p,pendingUrls,url;env||getEnv();if(urls){urls=typeof urls==="string"?[urls]:urls.concat();if(isCSS||env.async||env.gecko||env.opera){queue[type].push({urls:urls,callback:callback,obj:obj,context:context})}else{for(i=0,len=urls.length;i<len;++i){queue[type].push({urls:[urls[i]],callback:i===len-1?callback:null,obj:obj,context:context})}}}if(pending[type]||!(p=pending[type]=queue[type].shift())){return}head||(head=doc.head||doc.getElementsByTagName("head")[0]);pendingUrls=p.urls.concat();for(i=0,len=pendingUrls.length;i<len;++i){url=pendingUrls[i];if(isCSS){node=env.gecko?createNode("style"):createNode("link",{href:url,rel:"stylesheet"})}else{node=createNode("script",{src:url});node.async=false}node.className="lazyload";node.setAttribute("charset","utf-8");if(env.ie&&!isCSS&&"onreadystatechange" in node&&!("draggable" in node)){node.onreadystatechange=function(){if(/loaded|complete/.test(node.readyState)){node.onreadystatechange=null;_finish()}}}else{if(isCSS&&(env.gecko||env.webkit)){if(env.webkit){p.urls[i]=node.href;pollWebKit()}else{node.innerHTML='@import "'+url+'";';pollGecko(node)}}else{node.onload=node.onerror=_finish}}nodes.push(node)}for(i=0,len=nodes.length;i<len;++i){head.appendChild(nodes[i])}}function pollGecko(node){var hasRules;try{hasRules=!!node.sheet.cssRules}catch(ex){pollCount+=1;if(pollCount<200){setTimeout(function(){pollGecko(node)},50)}else{hasRules&&finish("css")}return}finish("css")}function pollWebKit(){var css=pending.css,i;if(css){i=styleSheets.length;while(--i>=0){if(styleSheets[i].href===css.urls[0]){finish("css");break}}pollCount+=1;if(css){if(pollCount<200){setTimeout(pollWebKit,50)}else{finish("css")}}}}return{css:function(urls,callback,obj,context){load("css",urls,callback,obj,context)},js:function(urls,callback,obj,context){load("js",urls,callback,obj,context)}}})(this.document);
+		
+		// DIC DNB
+		var dnb_query = "12월 20일"; // 검색 페이지 않으면, null 로 세팅
+		var dnb_service = "krdic";
+		var dnb_layer = "block";	//표시할려면 block
+	</script>
+	<script type="text/javascript" charset="utf-8" src="http://dicimg.naver.net/dic-common-js/gnbcommon/gnb/dic.DNB.js?2017122018"></script>
+    <!-- //공통 GNB -->    
+       <script type="text/javascript">
+           var nsc="krdic"; 
+           var gnb_option = {  
+	           gnb_service : "krdic", 
+	           gnb_template : "gnb_utf8", 
+	           gnb_logout : encodeURIComponent(window.location.href), 
+	           gnb_login : encodeURIComponent(window.location.href), 
+	           gnb_brightness : 3, 
+	           gnb_item_hide_option : 0, 
+	           gnb_one_naver : 1 
+           }
+       </script>
+       <div id="Ngnb" class="login_area">
+           <script type="text/javascript" charset="utf-8" src="https://ssl.pstatic.net/static.gn/templates/gnb_utf8.nhn?2017122018"></script>
+       </div>
+		<div id="top_search" class="sta">
+			<h2><a id="krdic_service" href="/" onclick="clickcr(this, 'DTP.krdic', '', '');" title="국어사전"><span class="blind">국어사전</span></a></h2>
+			<form id="acSearch" name="acSearch">
+				<fieldset id="field" class="auto_on">
+				<legend>검색영역</legend>
+				<div class="gbox">
+					<div class="gbox_inner" id="gbox_inner">
+						<dl id="igbox" class="selectlist">
+						<dt><a href="javascript:void(0)">전체</a><input type="hidden" id="selectRange" value="all"></dt>
+						<dd id="isubGbox" >
+							<ul class="opt">
+							<li><a class="value01"  href="javascript:void(0)">전체</a></li>
+							<li><a class="value02"  href="javascript:void(0)">단어</a></li>
+							<li><a class="value03"  href="javascript:void(0)">속담/관용구</a></li>
+							<li><a class="value04"  href="javascript:void(0)">예문</a></li>
+							<li><a class="value05"  href="javascript:void(0)">본문</a></li>
+							<li><a class="value07"  href="javascript:void(0)">맞춤법/표기법</a></li>
+							</ul>
+						</dd>
+						</dl>
+							<!--判断值 为不为空-->
+							<input type="text" accesskey="s" title="검색어" tabindex="1" name="query" maxlength="150" id="krdicQuery" value="12월 20일" class="keyword" autocomplete="off">
+							<a id="autocompleteArrow" href="javascript:void(0)" title="자동완성 펼치기"  class="btn_arw _btn_arw"><span  class="blind">자동완성 펼치기</span></a>
+						<!-- 자동완성레이어 -->
+						<div id="nautocomplete" style="position:relative; left:-20px;top:27px">
+	                     </div>
+					</div>
+				</div>
+				<a href="#" title="검색" class="btn_sch" onclick="clickcr(this,'DTP.search','','',event);return false;"><span class="blind">검색</span></a>
+				</fieldset>
+			</form>
+			<ul class="input_nav">
+            <li class="fc"><a title="팝업" href="#" onclick="clickcr(this,'DTP.oldword','','',event); window.open('/popup_old.nhn', '', 'width=450, height=563', 'scrollbars=no'); return false;" class="kr_ime">옛한글 입력기</a></li>
+            <li><a href="#" onclick="clickcr(this,'DTP.detail','','',event); return false;" class="srch_detail">상세검색</a>
+            <!-- [레이어] 상세검색 -->
+			<div class="ly_search" style="display:none;top:100px; left:400px;" id="detail_search">
+				<h3><span>국어사전 상세검색</span></h3>
+				<a href="#" class="btn_close"><span class="blind">닫기</span></a>
+				<fieldset>
+				<legend>상세검색</legend>
+				<dl class="search2">
+				<dt>부분단어 검색</dt>
+				<dd class="d"><input type="text" id="start_word" name="start_word"><label for="start_word">(으)로 시작하는 단어 검색하기</label><input type="text" id="end_word" name="end_word"><label for="end_word">(으)로 끝나는 단어 검색하기</label><input type="text" id="in_word" name="in_word"><label for="in_word">(이)가 포함된 단어 검색하기</label></dd>
+				<dt>자모 검색</dt>
+				<dd class="d">
+					<!-- [D] 인풋에 포커스 이동 시 value 값 리셋 -->
+					<input type="text" id="consonant" name="consonant" title="자음검색" value="ㅂㄷㅁ &rarr; 바닷물"><label for="consonant">의 자음으로 구성된 단어 검색하기</label>
+					<!-- [D] 인풋에 포커스 이동 시 value 값 리셋 -->
+					<input type="text" id="vowel" name="vowel" title="모음검색" value="ㅏㅓㅣ &rarr; 아버지"><label for="vowel">의 모음으로 구성된 단어 검색하기</label>
+					<input type="hidden" id="initial_word" name="initial_word" title="자모검색">
+				</dd>
+				</dl>
+				<div><a href="#" class="btn_search" onclick="clickcr(this,'dti.search','','',event);"><span class="blind">검색하기</span></a><a href="#" class="btn_close2" onclick="clickcr(this,'dti.close','','',event);"><span class="blind">닫기</span></a></div>
+				<dl class="notice">
+				<dt>사전검색 입력창에서 직접 와일드 카드(*,?)를 사용하여 검색이 가능합니다.</dt>
+				<dd>
+					<span>예시)</span>
+					<p>하늘로 시작하는 모든 단어 : 하늘*<br>하늘로 끝나는 모든 단어 : *하늘<br>하늘이 포함된 모든 단어: *하늘*<br>하늘 앞에 두 글자가 포함된 모든 단어 : ??한글</p>
+				</dd>
+				</dl>
+				</fieldset>
+				<a href="https://help.naver.com/support/contents/contents.nhn?serviceNo=1000&categoryNo=2743" target="_blank" class="btn_rule">상세검색 규칙보기</a>
+			</div>
+			<!-- //[레이어] 상세검색 -->
+            </li>
+            </ul>
+	</div>
+</div>
+	<!-- //HEADER -->
+	<!-- CONTAINER -->
+	<div id="container" class="layout2">
+	<!-- content -->
+		<div id="content">
+			<!-- CONTENT -->
+			<ul class="nav_cate">
+<li><strong><a href="/search.nhn?kind=all&query=12%EC%9B%94+20%EC%9D%BC" class="btn_nav"><span class="blind">전체</span></a><!-- N=a:lmn.all --></strong></li>
+<li><a href="/search.nhn?kind=keyword&query=12%EC%9B%94+20%EC%9D%BC" class="btn_nav2"><span class="blind">단어</span></a><!-- N=a:lmn.keyword --></li>
+<li><a href="/search.nhn?kind=idiom&query=12%EC%9B%94+20%EC%9D%BC" class="btn_nav3"><span class="blind">속담/관용구</span></a><!-- N=a:lmn.idiom --></li>
+<li><a href="/search.nhn?kind=example&query=12%EC%9B%94+20%EC%9D%BC" class="btn_nav4"><span class="blind">예문</span></a><!-- N=a:lmn.example --></li>
+<li><a href="/search.nhn?kind=body&query=12%EC%9B%94+20%EC%9D%BC" class="btn_nav5"><span class="blind">본문</span></a><!-- N=a:lmn.body --></li>
+<li><a href="/search.nhn?kind=study&query=12%EC%9B%94+20%EC%9D%BC" class="btn_nav6"><span class="blind">맞춤법/표기법</span></a><!-- N=a:lmn.study --></li>
+</ul>						<h3 class="result">
+			<strong>&#39;12월 20일&#39;</strong> 에 대한 검색 결과입니다.					</h3>
+	<input type="hidden" id="inputKind" value="all"/>
+<div class="ly_help" style="left:127px;display:none">
+	<p>이용자들이 직접 등록한 단어로 일부<br>정확하지 않은 정보가 포함될 수 있습니다.</p>
+    <a href="#" class="btn_clse" onclick="return false;">닫기</a>
+</div><!-- N=a:wrd.opendic -->
+
+	<div class="section">
+	<h4 class="head"><span class="head_main">본문</span><em>(1)</em></h4>
+	<ul class="lst3">
+		<li>
+		<div>
+			<a class="fnt15" href="user.nhn?docid=772519d5934f3782b5999905ed8f4b89"  >장애우는 표준어가 아니다. 장애인이 맞는 말.<sup></sup></a><!-- N=a:bdy.entry,r:1,i:772519d5934f3782b5999905ed8f4b89 -->
+	   <span class="open_dic"><span class="blind">오픈사전</span></span>
+	   	<span class="help_lk">
+	   		<a href="javascript:;" class="btn_help" onclick="return false;">도움말</a>
+	   	</span>
+	   </div>
+	   			<ul>
+			<li>4월 <strong>20일</strong>에 처음으로 장애인의 날 행사를 개최한 이후 해마다 4월 <strong>20일</strong>을 장애인의 날로 정해 이 날을 기념하고 있다. 유엔에서 규정한 장애인의 개념은 『선천적이든 후천적이든 간에... </li>
+			</ul>
+						</li>
+		</ul>
+	</div>
+	<div class="section4">
+	<h4 class="head"><span class="head_ex">예문</span><em>(2)</em></h4>
+	<ul class="lst3">
+		<li><p><strong>12월 20일</strong>쯤.<span class="ex"> (표제어:<a href="/detail.nhn?docid=36484200#128936">-쯤<sup>2</sup></a><!-- N=a:exa.entry,r:1,i:36484200 -->)</span></p></li>
+		<li><p>1953년 <strong>12월 20일</strong>, 하사로 군복을 벗게 되었을 때 그는 명예 제대증을 소유하게 되었다. <span class="from">출처 : 박태순, 어느 사학도의 젊은 시절</span><span class="ex"> (표제어:<a href="/detail.nhn?docid=16529600#195702">벗다<sup></sup></a><!-- N=a:exa.entry,r:1,i:16529600 -->)</span></p></li>
+		</ul>
+		
+</div>
+			<!-- //CONTENT -->
+		</div>
+		<div class="aside">
+										<ul class="word_popup">
+				<li class="first"><a href="http://wordbook.naver.com/krdic" onclick="clickcr(this,'rmn.wordbook','','',event);" class="word">단어장</a></li>
+				<li><a onclick="clickcr(this,'rmn.small','','',event)" href="javascript:SPS.miniPage('small_index.nhn');" class="popup">작은창 사전</a></li>
+				<li><a href="http://opendict.naver.com/participation/word_list.dict#common/register/ko/ko/" onclick="clickcr(this,'rmn.opn','','',event);" class="open_dic">오픈사전</a></li>
+				</ul>
+						<div class="ad fc">
+									<p><a href="http://www.korean.go.kr/" target="_blank"><img src="http://dicimg.naver.net/krdic/img/@banner.gif?201707051656" width="280" height="36" alt="자료제공 : 국립국어원"></a><!-- N=a:src.korean --></p><p></p>
+								<div id="da_280240" name="da_280240"><h3 class="blind">랜덤 광고 이미지 영역</h3><iframe title="랜덤 광고" id="f280240" name="f280240" src="http://ad.naver.com/fxshow?su=SU10057&calp=krdic" width="280" height="240" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" align="center" data-veta-preview="dic_280"></iframe></div>
+			</div>			
+<script language='javascript' type='text/javascript'>
+<!--
+
+function goLogin(type) {
+	if(type == "label") {
+		if(document.getElementById("save").checked)
+			document.getElementById("save").checked = false;
+		else
+			document.getElementById("save").checked = true;
+	}
+	
+	document.location.href="https://nid.naver.com/nidlogin.login?url="+encodeURIComponent(document.location.href);
+}
+
+function auto_save(type){
+	if(type == "label") {
+		if(document.getElementById("save").checked)
+			document.getElementById("save").checked = false;
+		else
+			document.getElementById("save").checked = true;
+	}
+	
+	if(document.getElementById("save").checked)
+		document.location.href="set_cookie.nhn?type=set&url=" + 'http%3A%2F%2Fkrdic.naver.com%2Fsearch.nhn%3Fquery%3D12%25EC%259B%2594%252020%25EC%259D%25BC%26kind%3Dall';
+	else
+		document.location.href="del_cookie.nhn?type=asd&url=" + 'http%3A%2F%2Fkrdic.naver.com%2Fsearch.nhn%3Fquery%3D12%25EC%259B%2594%252020%25EC%259D%25BC%26kind%3Dall&back=true';
+}
+//-->
+</script>
+<div class="section fc">
+<h3 class="at2">내가 찾은 단어</h3>
+	<ul class="no_result"><li><p>찾은 단어가 없습니다.</p></li></ul>
+	
+
+</div>						<div class="ad">
+				<a href="#" onclick="OPS.viewOPS('ops', {url : ' https://help.naver.com/support/contents/contents.nhn',  param : 'serviceNo=1000&categoryNo=2702&contentsNo=12571&interactiveMainNo=12570'}); return false;" title="새창 링크"><img src="http://dicimg.naver.net/krdic/img/new_banner.gif" width="280" height="56" alt="사용자와 함께 만드는 네이버 사전 - 콘텐츠 수정 요청 및 의견 제안하기"></a><!-- N=a:rbn.helpdesk -->
+				<a onclick="clickcr(this,'rbn.dicmaster','','',event);" href="http://blog.naver.com/dic_master" target="_blank"><img src="http://dicimg.naver.net/krdic/img/new_banner3.gif" width="280" height="38" alt="사전 공식 블로그 방문하기"></a>
+			</div>
+			<!-- 오픈사전 홍보배너 노출 영역 -->
+			<!-- 오픈사전 홍보배너 노출 영역 -->
+<div id="opendict_banner" class="ad" ></div>
+<script type="text/javascript">
+	$Fn(function(){
+		var dummy = '201707051656';
+		// 通过LazyLoad动态加载js文件
+		var host_prefix = location.hostname.indexOf("dev.") > -1 ? "dev." :( location.hostname.indexOf("local.") > -1 ? "dev." : (location.hostname.indexOf("stg.") > -1 ? "stg." :""));
+		LazyLoad.js( "http://" + host_prefix + "dict-plugin.naver.com/js/banner/dict.Banner.ads.js?" + dummy, function() {
+		    
+		    var banner = new dict.Banner( "krdict", "pc_entry" );
+		    var data = banner.getBanner();
+		    showBanner( data );
+		 
+		    function showBanner( data ) {
+		        var boxads = data;
+		        var banner = document.createElement( "DIV" ); // 动态生成 div 标签
+		        banner.className = boxads.className; // 赋值banner class
+		        banner.innerHTML = boxads.banner; // api返回的内容插入到div标签中
+		        document.getElementById( "opendict_banner" ).appendChild( banner ); // 将banner显示在body
+		    }
+		});
+	}).attach(window, "load");
+</script>			<div id="div_ad_right02" class="ad" style="display:block">
+	<a href="http://blog.naver.com/dic_master/90170869669" target="_blank">
+		<img src="http://dicimg.naver.net/krdic/img/ad_sub_n_new6.jpg" width="280" height="118" alt="네이버 사전앱! 앱 하나로 전 세계의 언어와 지식을 내 것으로 만들기">
+	</a><!-- N=a:rbn.banner1 -->
+</div>
+<!--script>
+function randForAdd(num){
+	var result =0;
+	result = Math.round(Math.random()); 
+	
+	if(result==0){
+		$("div_ad_right01").style.display="block";
+	}else if(result==1){
+		$("div_ad_right02").style.display="block";
+	}
+}
+randForAdd(2);
+</script-->						<div class="ad"><a href="http://book.naver.com/bookdb/book_detail.nhn?bid=6224817" target="_blank"><img src="http://dicimg.naver.net/krdic/img/img_dic_banner.gif?201707051656" width="280" height="96" alt="넓은풀이 우리말 유의어 대사전"></a><!-- N=a:rbn.synonym --></div>		</div>
+	</div>
+	<!-- //CONTAINER -->
+	<!-- FOOTER -->
+	<div id="footer"class="footer_search">
+	<div class="f_noti only_top">
+	<a href="#" class="btn_top"><img src="http://static.naver.com/krdic/img2010/btn_top.gif?201707051656" width="42" height="11" alt="맨위로"></a><!-- N=a:fot.top -->
+	</div>
+	<div class="f_ref">
+		<dl>
+		<dt><img src="http://static.naver.com/krdic/img2010/footer_offer.gif?201707051656" width="36" height="11" alt="자료제공"></dt>
+		<dd><a href="http://www.korean.go.kr/" target="_blank"><img src="http://static.naver.com/krdic/img2010/footer_origin.gif?201707051656" width="43" height="11" alt="국립국어원"></a><!-- N=a:fot.language --></dd>
+        <dd><a href="http://www.natmal.com/" target="_blank"><img src="http://static.naver.com/krdic/img2010/footer_origin2.gif?201707051656" width="33" height="11" alt="(주)낱말"></a><!-- N=a:fot.natmal --></dd>
+		</dl>
+		<a href="http://toolbar.naver.com/" class="btn_tool" target="_blank"><img src="http://static.naver.com/krdic/img2010/footer_download.gif?201707051656" width="107" height="11" alt="네이버 툴바 다운로드"></a><!-- N=a:fot.toolbar -->
+	</div>
+	<div class="f_terms">
+        <dl class="policy">
+        <dt class="blind">네이버 정책 및 약관</dt>
+        <dd class="frst"><a href="http://www.naver.com/rules/service.html" target="_blank">이용약관</a><!-- N=a:fot.agreement --></dd>
+        <dd><a href="http://www.naver.com/rules/privacy.html" target="_blank"><strong>개인정보처리방침</strong></a><!-- N=a:fot.privacy --></dd>
+        <dd><a href="http://www.naver.com/rules/disclaimer.html" target="_blank">책임의 한계와 법적고지</a><!-- N=a:fot.disclaimer --></dd>
+        <dd><a href="#" title="새창 링크" onclick="OPS.viewOPS('ops', {url : 'https://help.naver.com/support/service/main.nhn',  param : 'serviceNo=1000&categoryNo=2723'}); return false;">사전 고객센터</a><!-- N=a:fot.help --></dd>
+        <dd><a href="#" title="새창 링크" onclick="OPS.viewOPS('ops', {url : 'https://help.naver.com/support/contents/contents.nhn', param : 'serviceNo=1000&categoryNo=2702&contentsNo=12571&interactiveMainNo=12570'}); return false;">콘텐츠 수정</a> 및 <a href="#" title="새창 링크" onclick="OPS.viewOPS('ops', {url : 'https://help.naver.com/support/service/main.nhn', param : 'serviceNo=1000&categoryNo=2705'}); return false;">오류 신고</a><!-- N=a:fot.helpdesk --></dd>
+        </dl>
+        <div class="warning">본 콘텐츠의 저작권은 제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다.</div> 
+        <address>
+            <a href="http://www.nhncorp.com/" target="_blank" class="logo"><img src="http://static.naver.net/common/footer/ci_naver.gif" width="63" height="11" alt="NAVER"></a><!-- N=a:fot.nhn -->
+            <em>Copyright ©</em>
+            <a href="http://www.nhncorp.com/" target="_blank">NAVER Corp.</a><!-- N=a:fot.nhncorp -->
+            <span>All Rights Reserved.</span>
+        </address>
+    </div>
+	</div>
+<script type="text/javascript">
+	SPS.__inst.top_search = new SPS.top_search("top_search", undefined);
+	KRDIC.__inst.detail_search = new KRDIC.detail_search("detail_search", undefined);
+	SPS.__OpendicLayer = new SPS.OpendicLayer();
+</script>
+<script type="text/javascript">
+	var svc_name="stdkrdic";
+	var svc_domain="/search.nhn?kind=&query=";
+	
+	var ac = new nhn.ac.Controller({
+	formName: "acSearch",
+	layerName: "nautocomplete",
+	ifrmSrc: "/js/acNewp.php",
+	max_ql: 35,
+	ft_ie: -28,
+	fl_ie: 352,
+	ft_b_ie: -8, 
+	fl_b_ie: 121,
+	tw_ie: 249,	
+	ws_ie: 960,	 
+	
+	ft_ff: -28,	 
+	fl_ff: 352,
+	ft_b_ff: -8, 
+	fl_b_ff: 121,
+	tw_ff: 249,
+	ws_ff: 980,	 
+	
+	ft_op: -28,	 
+	fl_op: 352,
+	ft_b_op: -8, 
+	fl_b_op: 121,
+	tw_op: 249,
+	ws_op: 980
+	});
+	ac.submitForm = function()
+	{
+		var g_sv = "";
+		var a_now = this.oDisplay.a_now;
+		var ip = this.Ip.value;
+		var num = $("selectRange").value;
+		var sLargeUrl = "/search.nhn?kind="+num +"&query=";
+		window.location= sLargeUrl+encodeURIComponent(ip);
+	};
+	
+	ac.reqAC = function(me)
+	{
+		oCurrentAC = this;
+		var sv;
+		var ke=nhn.ac.Utility.trimSpace(this.Ip.value, me);
+		//ke=nhn.ac.Utility.escape(escape(ke)); // escape 사용하면 인코딩됨
+		ke=nhn.ac.Utility.escape(ke);
+		if (ke=="") {
+			this.oDisplay.acHide();
+			return;
+		}
+		
+		// http://bts1.navercorp.com/nhnbts/browse/DICNGDSUS-28757
+		ke = ke.replace("#", "%23");
+		
+		//sv = "http://ac.search.naver.com/8089/autocompl?frm=" + svc_name + "&oe=utf8&m=" + me + "&r=1&q=" + ke;
+		sv = "http://ac.dic.naver.net/krdic/ac?frm=" + svc_name + "&oe=utf8&m=" + me + "&r=1&st=111&r_lt=111&q=" + ke;
+		
+		this.request({method:"jsonp", url: sv, charset: "utf8", callback: "makeAutoCompletion"});
+	}
+	
+	function showAC(_req)
+	{
+		try
+		{
+			if (_req.readyState==4 && _req.responseText && _req.status==200) {
+				eval(_req.responseText);
+				set_cc(qs_q, qs_ac_list, qs_ac_id, qs_m, qs_opp_list, qs_errata, qs_err_ac_list, qs_err_opp_list);
+				ac_show(qs_q, qs_ac_list, qs_ac_id, qs_m, qs_opp_list, qs_errata, qs_err_ac_list, qs_err_opp_list);
+			}
+		} catch (e) {
+			return;
+		}
+	}
+	
+
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var ccsrv="cc.naver.com";
+var nclk_evt = 1;
+
+// 이벤트 Listener 함수 호출
+nclk_do();
+//]]>
+</script>	<!-- //FOOTER -->
+</div>
+
+<!-- add_layer2 start -->
+        <div class="add_layer2" id="add_layer_info">
+            <p class="txt">단어장 이용약관에 동의하신 후 이용이 가능합니다.</p>
+            <p class="btn"><a href="#"><img src="http://dicimg.naver.net/krdic/img/btn_view_reg.gif" alt="약관보기" /></a></p>
+        </div>
+        <!--// add_layer2 end -->
+        <!-- add_layer_agreement start -->
+    <div class="add_layer_agreement" id="add_layer_agreement">
+        <h3><span class="fnt_k24">단어장 이용약관</span></h3>
+        <div class="reg_con">
+            <h3>제 1조 (목적)</h3>
+			<p> 네이버 단어장 이용약관(이하 “약관”이라 합니다)은 “이용자”가 NAVER주식회사(이하 “회사”라 합니다)가 제공하는 단어장 서비스를 이용함에 있어 “회사”와 “이용자”간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+
+			<h3>제 2조 (용어의 정의)</h3>
+			<ol>
+			<li><span class="first_letter">①</span>“단어장”이란 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와 상관없이 이용자가 네이버 사전상의 모든 단어, 숙어, 예문 등을 저장하여 열람, 편집, 인쇄 등을 할 수 있는 네이버 단어장 서비스를 의미합니다.</li>
+			<li><span class="first_letter">②</span>“이용자”란 네이버 이용약관(<a href="http://www.naver.com/rules/service.html" target="_blank">http://www.naver.com/rules/service.html</a>)에 동의한 네이버 회원 중 “회사”가 제공하는 단어장 서비스를 이용하기 위해 본 약관에 동의한 고객을 말합니다.</li>
+			
+			</ol>
+
+			<h3>제 3조 (이용약관의 효력 및 변경)</h3>
+			<ol>
+			<li><span class="first_letter">①</span>본 약관은 “이용자”가 쉽게 알 수 있도록 “서비스” 초기 화면에 게시하고, “이용자”가 동의를 함으로써 효력이 발생합니다.</li>
+			<li><span class="first_letter">②</span>“회사”는 관련 법령에 위배되지 않는 범위 내에서 약관의 내용을 개정할 수 있습니다.</li>
+			<li><span class="first_letter">③</span>“회사”가 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 제1항의 방식에 따라 그 개정약관의 적용일자 30일 전부터 적용일자 전일까지 공지합니다. 다만, “이용자”에게 불리한 약관 개정의 경우에는 공지 외에 일정기간 네이버 서비스를 통한 전자우편, 전자쪽지, 동의창 등의 전자적 수단을 통해 따로 명확히 통지하도록 합니다.</li>
+
+			<li><span class="first_letter">④</span>“회사”가 전항에 따라 개정약관을 공지 또는 통지하면서 “이용자”에게 30일 기간 내에 의사표시를 하지 않으면 의사표시가 표명된 것으로 본다는 뜻을 명확하게 공지 또는 통지하였음에도 “이용자”가 명시적으로 거부의 의사표시를 하지 아니한 경우 “이용자”가 개정약관에 동의한 것으로 봅니다.</li>
+			<li><span class="first_letter">⑤</span>“이용자”가 개정약관의 적용에 동의하지 않는 경우 “회사”는 개정 약관의 내용을 적용할 수 없으며, 이 경우 “이용자”는 “단어장” 이용계약을 해지할 수 있습니다. 다만, 기존 약관을 적용할 수 없는 특별한 사정이 있는 경우에는 “회사”는 단어장 이용계약을 해지할 수 있습니다.</li>
+			</ol>
+			<h3>제 4조 (회사의 의무)</h3>
+			<p>회사는 계속적이고 안정적인 단어장 서비스의 제공을 위해 설비에 장애가 생기거나 멸실된 때에는 부득이한 사유가 없는 한 지체 없이 이를 수리 또는 복구합니다.</p>
+			<h3>제 5조 (이용자의 의무)</h3>
+
+			<p>“이용자”는 본인 사용의 목적에 한해서만 “단어장”의 내용을 열람, 편집, 인쇄, 사용할 수 있으며, 그 이외의 목적으로 “단어장”을 이용해서는 아니됩니다.</p>
+			<h3>제 6조 (단어장 컨텐츠의 저작권)</h3>
+			<p>네이버 사전으로부터 “단어장”으로 저장되는 모든 단어, 숙어, 예문의 저작권은 사전 컨텐츠 제공업체에 있습니다.</p>
+			<h3>제 7조 (서비스의 변경)</h3>
+			<ol>
+			<li><span class="first_letter">①</span>회사의 사정, 사전 컨텐츠 제공업체의 변경 등으로 인해 단어장 서비스의 일부 또는 전부가 변경, 종료될 수 있으며, 이 경우 “회사”는 그 사유를 변경 또는 종료 전 30일 이상 단어장 서비스 메인페이지에 게시하여야 합니다.</li>
+
+			<li><span class="first_letter">②</span>단어장 서비스의 변경 또는 종료에 따라 “단어장”에 저장된 내용이 삭제될 수 있습니다.</li>
+			<li><span class="first_letter">③</span>“회사”는 제1, 2항과 관련하여 관련법에 특별한 규정이 없는 한 “이용자”에게 별도의 보상을 하지 않습니다.</li>
+			</ol>
+			<h3>제 8조 (기타)</h3>
+			<p>본 약관에 명시되지 않은 사항은 네이버 이용약관(<a href="http://www.naver.com/rules/service.html" target="_blank">http://www.naver.com/rules/service.html</a>) 및 전기통신사업법 등 관계법령과 상관습에 따릅니다.</p>
+
+			<h3>&lt;부칙&gt;</h3>
+			<ol>
+			<li><span class="first_letter">1.</span>본 약관은 2009년 12월 29일부터 적용됩니다.</li>
+			</ol>
+    
+        </div>
+        <div class="confirm">
+            <p><img src="http://dicimg.naver.net/krdic/img/txt_reg_agree.gif" alt="이용약관에 동의하시겠습니까?" /></p>
+
+            <p class="btn" id="agr_btn"><a href="#" id="J_agree"><img src="http://dicimg.naver.net/krdic/img/btn_reg_agree.gif" alt="동의" /></a><a href="#" class="mar1"><img src="http://dicimg.naver.net/krdic/img/btn_reg_disagree.gif" alt="동의하지 않습니다" /></a></p>
+        </div>
+        <a href="#"><img src="http://dicimg.naver.net/krdic/img/btn_close3.gif" alt="단어장 이용약관 닫기" class="close" /></a>
+    </div>
+    <!--// add_layer_agreement end -->
+    <!-- add_layer start -->
+        <div style="display:none;" class="ly_sword" id="add_layer_wblist">
+			<dl>
+			<dt>저장할 단어장을 선택하세요.</dt>
+			<dd></dd>
+			<dd><a href="#"><span class="plus"><em class="blind">+</em></span>새 단어장 만들기</a></dd>
+			</dl>
+		</div>
+        <!-- add_layer end -->      
+        <!-- add_layer_tip start -->
+        <div style="display:none;" class="ly_sword" id="add_layer_tip">
+			<p class="msg">‘<strong></strong>’에<br>저장되었습니다.</p>
+		</div>
+        <!-- add_layer_tip end -->
+        <!-- creat_layer start -->
+        
+        <div class="creat_layer" id="create_layer_wbname">
+        	<form onsubmit="return false;" name="word_add">
+            	<h3><span class="fnt_k24"><strong>국어단어장 추가</strong></span></h3>
+            	<p class="des"><span class="fnt_k26">단어장을 추가 합니다. 단어장 이름을 지어주세요.</span></p>
+            	<p class="in1"><span class="fnt_k25"><label for="p_word_name">단어장 이름</label></span><input id="p_word_name" class="txt" maxLength="16" type="text">
+            	<p class="add_tiplayer">&lt; 혹은 &gt; 기호는 사용하실 수 없습니다.</p>
+            	<p class="btn_area"><input name="" type="image" src="http://dicimg.naver.net/krdic/img/btn_01.gif" alt="확인" title="확인" width="45" height="26" /><input name="" type="image" src="http://dicimg.naver.net/krdic/img/btn_02.gif" alt="단어장 추가 취소하기" width="45" height="26" class="mar" /></p>
+            	<a href="#"><img src="http://dicimg.naver.net/krdic/img/btn_close3.gif" alt="국어단어장 추가 팝업 닫기" class="close" /></a>
+        	</form>
+        </div>
+        <!-- creat_layer end --><script type="text/javascript" src="/js/autoSave.js?201707051656"></script>
+
+ 
+<script type="text/javascript" src="/js/pronunciation_ipad.min.js?201707051656"></script>
+<script type="text/javascript" src="/js/html5Audio.min.js?201707051656"></script>
+
+<script type="text/javascript">
+	var g_ssc = "dic.kr.all";
+	var g_query = "12월 20일";
+	var ccsrv = "cc.naver.com";
+</script>
+</body>
+</html>

@@ -22,12 +22,13 @@ module.exports = function (app, fs) {
 		console.log(_obj.content)
 
 		if (_obj.content == "날짜") {   //?醫롮?甕곌쑵??
-			var date=require('./date/day')();      //?醫롮? 揶쎛?紐꾩궎疫?
-                                               
+			var date=require('./date/dateinfo')();      //?醫롮? 揶쎛?紐꾩궎疫?
+                                  
 			// 燁삳똾???곗쨮 ?袁⑸꽊
 			res.set({
 				'content-type': 'application/json'
 			}).send(JSON.stringify(date));
+
 
 		}
 		 else if (_obj.content == "바로가기") {
@@ -38,14 +39,7 @@ module.exports = function (app, fs) {
 			}).send(JSON.stringify(move));
 
 		}
-		 else if (_obj.content == '오늘에 대해 알아보기') {
-			var info=require('./date/dateinfo')();
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(info));
-
-		}
- else if (_obj.content == '학교 홈페이지') {
+		 else if (_obj.content == '학교 홈페이지') {
 	let message = {
 				"message": {
 					"text": contact.info[0]
