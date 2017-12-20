@@ -41,6 +41,9 @@ module.exports = function (app, mysql, connection) {
 }
 
 function updateDB(connection) {
+	/*var request = require('request');
+
+
 
 	request.get(options, function (error, response, body) {
 		//request 성공했으면..
@@ -51,7 +54,12 @@ function updateDB(connection) {
 			//console.log(' error = ' + response.statusCode);
 
 		}
-	});
+	});*/
+
+	for(var i = 1; i <= 100; i++){
+		var n_date = objBody.items[i].date;
+		var n_content = objBody.items[i].content;
+
 
 }	
 

@@ -51,23 +51,17 @@ module.exports = function (app, fs) {
 			let message = {
 				"message": {
 					"text": '원하는 날짜를 YYYY/MM/DD 형식으로 입력하세요.'
-				},
-				/*"keyboard": {
-					"type": "buttons",
-					"buttons": [
-						"일정 등록",
-						"일정 확인",
-						"처음으로"
-					]
-				}*/
+				}
 			};
+
+			/*res.set({
+				'content-type': 'application/json'
+			}).send(JSON.stringify(message));*/
+		
 			
 			var result;
 			//var picture = require('./function/calender');
 			
-			res.set({
-				'content-type': 'application/json'
-			}).send(JSON.stringify(message));
 			
 		} else if (_obj.content == '일정 확인') {
 			
