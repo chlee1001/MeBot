@@ -36,7 +36,7 @@ module.exports.restaurant = function (callback) {
 				return ranNum;
 			}
 
-			var i = generateRandom(0, 100); // 랜덤 넘버
+			var i = generateRandom(1, 100); // 랜덤 넘버
 
 			// 랜덤 넘버에 해당하는 식당 추출
 			var title = objBody.items[i].title;
