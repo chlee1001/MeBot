@@ -1,6 +1,11 @@
 /**
  * Created by chlee1001 on 2017.12.14.
  */
+var time = require('date-utils');
+var dDate = new Date();
+var today = dDate.toFormat('YYYY-MM-DD');
+var year = dDate.toFormat('YYYY');
+var month = dDate.toFormat('MM');
 
 module.exports = function (app, mysql, connection) {
 	// DataBase
@@ -10,11 +15,6 @@ module.exports = function (app, mysql, connection) {
 	var xml2js = require('xml2js');
 	var parser = new xml2js.Parser();
 	var request = require('request');
-	var time = require('date-utils');
-	var dDate = new Date();
-	var today = dDate.toFormat('YYYY-MM-DD');
-	var year = dDate.toFormat('YYYY');
-	var month = dDate.toFormat('MM');
 
 	var db_config = {
 		host: "localhost",
