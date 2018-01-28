@@ -33,6 +33,23 @@ module.exports.visionTower = function (callback) {
 			var menu = new Array();
 			var menuCnt = 0;
 
+			if (objBody.store.menu_description == '식당에서 식단을 업로드하지 않았습니다.') {
+				let message = {
+					"message": {
+						"text": name + '\n' + objBody.store.menu_description
+					},
+					"keyboard": {
+						"type": "buttons",
+						"buttons": [
+							"창조관",
+							"아름관",
+							"돌아가기"
+						]
+					}
+				};
+				return callback(message);
+			}
+
 			for (var i = 0; i < objLength; i++) {
 				if (menus[i].date.indexOf(days) > -1) {
 					menu[i] = '\n<' + menus[i].name + '>\n' + menus[i].description + '\n';
@@ -46,7 +63,7 @@ module.exports.visionTower = function (callback) {
 				result += menu[i];
 			}
 
-		//	console.log(result);
+			//console.log(result);
 
 			let message = {
 				"message": {
@@ -80,7 +97,7 @@ module.exports.visionTower = function (callback) {
 				}
 			};
 			//카톡에 메시지 전송 에러 메시지
-			return callback(message);
+			//return callback(message);
 		}
 	});
 }

@@ -10,7 +10,6 @@ module.exports = function () {
 			"type": "buttons",
 			"buttons": [
 				"시작하기",
-				"사용방법",
 				"문의하기"
 			]
 		}
