@@ -44,6 +44,17 @@ app.get('/list', function (req, res) {
 });
 
 // call DB connection
+// cron 스타일로 월요일부터 금요일까지 오전 11시에 시행될 스케줄링 등록
+// *    *    *    *    *    *
+//┬    ┬    ┬    ┬    ┬    ┬
+//│    │    │    │    │    |
+//│    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)
+//│    │    │    │    └───── month (1 - 12)
+//│    │    │    └────────── day of month (1 - 31)
+//│    │    └─────────────── hour (0 - 23)
+//│    └──────────────────── minute (0 - 59)
+//└───────────────────────── second (0 - 59, OPTIONAL)
+
 var restaurantDB = schedule.scheduleJob('00 00 06 1 */1 *', function () { // DB update Scheduler: 매월 1일 6시
 		restaurantListDB();
 	});
