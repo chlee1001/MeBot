@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Server connect
 var server = app.listen(9000, function () { // port 9000 서버 실행
-		console.log("Express server has started on port 9000")
+		console.log("Express server has started on port 9000");
 	});
 
 // MeBot start
